@@ -155,7 +155,7 @@
   .cy-center b{display:block;font-size:18px;font-weight:900;color:var(--yellow);letter-spacing:.14em}
 
   .hero-stats{
-    display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:44px;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 22px;margin-top:44px;
     padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
   }
   .stat{display:inline-flex;align-items:baseline;gap:7px;font-size:15px;color:var(--muted-light);letter-spacing:.03em;position:relative}
@@ -176,7 +176,7 @@
   .cta .pass{font-family:var(--latin);letter-spacing:.02em}
   .cta svg{width:18px;height:18px}
 
-  .cta-group{display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:40px}
+  .cta-group{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:40px}
   .view-schedule{
     display:inline-flex;align-items:center;gap:9px;
     background:none;border:none;cursor:pointer;font-family:inherit;
@@ -438,10 +438,20 @@
     display:flex;flex-direction:column;
   }
   .mentor:hover{border-color:var(--yellow);transform:translateY(-5px);background:rgba(250,234,103,.04)}
-  .mentor .mhead{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
-  .mentor .mname{font-size:22px;font-weight:900;letter-spacing:.02em}
+  .mentor .mhead{display:flex;flex-direction:column;align-items:center;text-align:center;gap:9px;margin-bottom:6px}
+  .m-avatar-wrap{
+    position:relative;width:76px;height:76px;border-radius:50%;overflow:hidden;flex-shrink:0;
+    background:linear-gradient(135deg,rgba(250,234,103,.24),rgba(250,234,103,.04));
+    border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;
+    transition:border-color .3s;
+  }
+  .mentor:hover .m-avatar-wrap{border-color:var(--yellow)}
+  .m-initial{font-family:var(--cjk);font-weight:900;font-size:27px;color:rgba(250,234,103,.55);letter-spacing:.02em}
+  .m-avatar{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease}
+  .m-avatar.loaded{opacity:1}
+  .mentor .mname{font-size:20px;font-weight:900;letter-spacing:.02em}
   .mentor .mbti{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink);background:var(--yellow);padding:3px 8px;border-radius:6px}
-  .mentor .mquote{font-size:13px;color:var(--yellow);font-style:italic;margin:12px 0 16px;line-height:1.55;min-height:38px}
+  .mentor .mquote{font-size:13px;color:var(--yellow);font-style:italic;margin:6px 0 16px;line-height:1.55;min-height:38px;text-align:center}
   .mentor ul{list-style:none;margin-top:auto}
   .mentor li{font-size:12.5px;color:var(--muted-light);padding-left:14px;position:relative;margin-bottom:6px;line-height:1.5}
   .mentor li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;background:var(--yellow);border-radius:50%}
@@ -570,10 +580,10 @@
 
     <div class="cycle">
       <svg class="cycle-ring" viewBox="0 0 600 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle class="ring" cx="300" cy="290" r="190"/>
-        <path class="ar" d="M0,-7 L10,0 L0,7 Z" transform="translate(135.5,195) rotate(120)"/>
-        <path class="ar" d="M0,-7 L10,0 L0,7 Z" transform="translate(300,480) rotate(0)"/>
-        <path class="ar" d="M0,-7 L10,0 L0,7 Z" transform="translate(464.5,195) rotate(240)"/>
+        <circle class="ring" cx="300" cy="274" r="190"/>
+        <path class="ar" d="M0,-7 L10,0 L0,7 Z" transform="translate(135.5,179) rotate(120)"/>
+        <path class="ar" d="M0,-7 L10,0 L0,7 Z" transform="translate(300,464) rotate(0)"/>
+        <path class="ar" d="M0,-7 L10,0 L0,7 Z" transform="translate(464.5,179) rotate(240)"/>
       </svg>
 
       <div class="cy-node cy-top">
@@ -883,42 +893,66 @@
 
     <div class="mentor-grid">
       <div class="mentor reveal">
-        <div class="mhead"><div class="mname">白熊</div><div class="mbti">ENFP</div></div>
+        <div class="mhead">
+          <div class="m-avatar-wrap"><span class="m-initial">白</span><img class="m-avatar" src="images/导师白熊.png" alt="白熊头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
+          <div class="mname">白熊</div><div class="mbti">ENFP</div>
+        </div>
         <div class="mquote">「Feel Good & Be Happy」</div>
         <ul><li>白熊良币厂牌创始人</li><li>创变者计划发起人</li><li>多重潜力者教练 · Make it happen</li><li>捍卫可持续的生命力与创造力</li></ul>
       </div>
       <div class="mentor reveal">
-        <div class="mhead"><div class="mname">紫璇</div><div class="mbti">INFJ</div></div>
+        <div class="mhead">
+          <div class="m-avatar-wrap"><span class="m-initial">紫</span><img class="m-avatar" src="images/导师紫璇.png" alt="紫璇头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
+          <div class="mname">紫璇</div><div class="mbti">INFJ</div>
+        </div>
         <div class="mquote">「带着担忧害怕焦虑，依然可以继续行动」</div>
         <ul><li>厂牌联合创始人 · 内容&流量负责人</li><li>清华硕士，前互联网大厂工程师</li><li>推动 3 款千元级产品落地</li><li>创作 10 万+ 字，变现六位数</li></ul>
       </div>
       <div class="mentor reveal">
-        <div class="mhead"><div class="mname">亦锦</div><div class="mbti">INFP</div></div>
+        <div class="mhead">
+          <div class="m-avatar-wrap"><span class="m-initial">亦</span><img class="m-avatar" src="images/导师亦锦.png" alt="亦锦头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
+          <div class="mname">亦锦</div><div class="mbti">INFP</div>
+        </div>
         <div class="mquote">「Creating the life of your dream」</div>
         <ul><li>百万 GMV 课程制作人</li><li>前 AI + 教育产品经理</li><li>孵化 1K 粉变现六位数账号</li><li>哥伦比亚大学硕士 · 低成本旅居欧洲</li></ul>
       </div>
       <div class="mentor reveal">
-        <div class="mhead"><div class="mname">Lena</div><div class="mbti">ISFJ</div></div>
+        <div class="mhead">
+          <div class="m-avatar-wrap"><span class="m-initial">L</span><img class="m-avatar" src="images/导师lena.png" alt="Lena头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
+          <div class="mname">Lena</div><div class="mbti">ISFJ</div>
+        </div>
         <div class="mquote">「人生是一场温暖又深刻的电影」</div>
         <ul><li>教育学博士生 · 北欧交换</li><li>发表论文 10 篇，国际顶会 3 篇</li><li>小红书 1K 粉变现五位数</li><li>带领 50+ 创变者从 0 做课程</li></ul>
       </div>
       <div class="mentor reveal">
-        <div class="mhead"><div class="mname">Meya</div><div class="mbti">ISFP</div></div>
+        <div class="mhead">
+          <div class="m-avatar-wrap"><span class="m-initial">M</span><img class="m-avatar" src="images/导师meya.png" alt="Meya头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
+          <div class="mname">Meya</div><div class="mbti">ISFP</div>
+        </div>
         <div class="mquote">「存在 · 体验 · 创造」</div>
         <ul><li>非标产品「自我关系个案」</li><li>帮助 400+ 客户提升内核力与行动力</li><li>高敏与力量并存</li><li>陪跑 30+ 一对一变现产品</li></ul>
       </div>
       <div class="mentor reveal">
-        <div class="mhead"><div class="mname">曼琪</div><div class="mbti">ENFJ</div></div>
+        <div class="mhead">
+          <div class="m-avatar-wrap"><span class="m-initial">曼</span><img class="m-avatar" src="images/导师曼琪.png" alt="曼琪头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
+          <div class="mname">曼琪</div><div class="mbti">ENFJ</div>
+        </div>
         <div class="mquote">「创造你的生命道路」</div>
         <ul><li>顶级操盘团队内容负责人</li><li>7 天裂变 3 万人</li><li>9.9 升单百万</li><li>仅靠私域变现十几万 · 定居爱尔兰</li></ul>
       </div>
       <div class="mentor reveal">
-        <div class="mhead"><div class="mname">米尼</div><div class="mbti">ENFJ</div></div>
+        <div class="mhead">
+          <div class="m-avatar-wrap"><span class="m-initial">米</span><img class="m-avatar" src="images/导师米尼.png" alt="米尼头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
+          <div class="mname">米尼</div><div class="mbti">ENFJ</div>
+        </div>
         <div class="mquote">「会用 AI 是组织管理能力的体现」</div>
         <ul><li>哥大硕士 → 前企业高管 → All in AI</li><li>武汉 AI 圈联合创始人 · 字节 TRAE Fellow</li><li>百度秒哒首批超级开发者</li><li>企业 AI 培训 / 智能体定制</li></ul>
       </div>
       <div class="mentor reveal">
-        <div class="mhead"><div class="mname">菲比</div><div class="mbti">ENTP</div></div>
+        <div class="mhead">
+          <div class="m-avatar-wrap"><span class="m-initial">菲</span><img class="m-avatar" src="images/导师菲比.png" alt="菲比头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
+          <div class="mname">菲比</div><div class="mbti">ENTP</div>
+        </div>
         <div class="mquote">「AI 时代，用认知和审美破局」</div>
         <ul><li>小红书家居博主 · 年涨粉破万</li><li>擅长户型改造、软装色彩</li><li>变现破 10W，单篇广告破 7K</li><li>指导素人做出千赞笔记并变现</li></ul>
       </div>
