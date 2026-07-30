@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>创变者计划 2.0 · 多元认知进化舱｜白熊良币厂牌</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1A1A1A;
+    --ink-2:#111111;
+    --ink-soft:#232323;
+    --yellow:#FAEA67;
+    --yellow-deep:#E6D33F;
+    --paper:#FFFFFF;
+    --muted:#8A8A85;
+    --muted-light:#B7B7B0;
+    --line:rgba(250,234,103,.18);
+    --line-dark:rgba(0,0,0,.10);
+    --cjk:"Alibaba PuHuiTi","Alibaba PuHuiTi 2.0","PingFang SC","Microsoft YaHei","Source Han Sans SC",sans-serif;
+    --latin:"Space Grotesk",var(--cjk);
+    --mono:"Space Mono","SF Mono",ui-monospace,monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--cjk);
+    background:var(--ink);
+    color:var(--paper);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--yellow);color:var(--ink)}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+  /* ---------- utility labels ---------- */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--yellow);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--yellow)}
+  .section-num{
+    font-family:var(--latin);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.1em;
+    color:var(--yellow);
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1 !important;transform:none !important;transition:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* ===================================================== HERO */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:120px 0 70px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    position:absolute;inset:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:70px 70px;
+    mask-image:radial-gradient(circle at 70% 35%,#000 0%,transparent 72%);
+    -webkit-mask-image:radial-gradient(circle at 70% 35%,#000 0%,transparent 72%);
+    opacity:.5;
+  }
+  .hero-glow{
+    position:absolute;top:-10%;right:-8%;
+    width:620px;height:620px;
+    background:radial-gradient(circle,rgba(250,234,103,.16),transparent 62%);
+    filter:blur(10px);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .masthead{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:58px}
+  .brand-lockup{display:flex;align-items:center;gap:13px;border-left:4px solid var(--yellow);padding-left:14px}
+  .brand-names{display:flex;flex-direction:column;line-height:1.2}
+  .brand-names b{font-size:21px;font-weight:900;letter-spacing:.08em;color:var(--paper)}
+  .brand-names i{font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.22em;color:var(--muted);margin-top:4px}
+  .brand-slogan{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--yellow);border:1px solid var(--line);border-radius:999px;padding:9px 16px}
+
+  .hero-kick{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.24em;color:var(--yellow);
+    display:inline-flex;align-items:center;gap:11px;margin-bottom:24px;
+  }
+  .hero-kick::before{content:"";width:30px;height:1px;background:var(--yellow)}
+  .hero-title{
+    display:flex;flex-wrap:wrap;align-items:baseline;
+    font-weight:900;
+    font-size:clamp(50px,13vw,156px);
+    line-height:.9;
+    letter-spacing:.005em;
+  }
+  .hero-title .tl-solid{color:var(--yellow);text-shadow:0 0 64px rgba(250,234,103,.22)}
+  .hero-title .tl-sub{margin-left:.14em;color:var(--paper)}
+  .hero-en{font-family:var(--latin);font-weight:600;font-size:clamp(12px,1.6vw,16px);letter-spacing:.4em;color:var(--muted-light);margin-top:22px}
+  .hero-sub-pill{
+    display:inline-block;
+    margin-top:26px;
+    font-size:clamp(15px,2vw,20px);
+    letter-spacing:.32em;
+    font-weight:600;
+    color:var(--ink);
+    background:var(--yellow);
+    padding:9px 22px;
+    border-radius:999px;
+  }
+  .hero-line{
+    margin-top:30px;
+    font-size:clamp(17px,2.3vw,24px);
+    color:var(--paper);
+    font-weight:500;
+  }
+  .hero-line .cm{font-family:var(--latin);font-weight:700;color:var(--yellow);letter-spacing:.02em}
+
+  .cycle{position:relative;width:100%;max-width:470px;margin:52px auto 8px;aspect-ratio:600/560}
+  .cycle-ring{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .cycle-ring .ring{fill:none;stroke:var(--yellow);stroke-width:1.5;opacity:.32;stroke-dasharray:4 6}
+  .cycle-ring .ar{fill:var(--yellow)}
+  .cy-node{position:absolute;transform:translate(-50%,-50%);width:124px;text-align:center}
+  .cy-top{left:50%;top:17.9%}
+  .cy-bl{left:22.6%;top:68.8%}
+  .cy-br{left:77.4%;top:68.8%}
+  .cy-ic{
+    width:60px;height:60px;border-radius:50%;
+    background:var(--ink);border:1.5px solid var(--yellow);color:var(--yellow);
+    display:inline-flex;align-items:center;justify-content:center;margin-bottom:11px;
+    transition:background .3s,color .3s,transform .3s,box-shadow .3s;
+  }
+  .cy-ic svg{width:28px;height:28px}
+  .cy-node:hover .cy-ic{background:var(--yellow);color:var(--ink);transform:scale(1.07);box-shadow:0 10px 26px rgba(250,234,103,.24)}
+  .cy-name{font-size:18px;font-weight:900;letter-spacing:.06em}
+  .cy-sub{font-size:11.5px;color:var(--muted-light);margin-top:4px;line-height:1.4}
+  .cy-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
+  .cy-center b{display:block;font-size:18px;font-weight:900;color:var(--yellow);letter-spacing:.14em}
+
+  .hero-stats{
+    display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:44px;
+    padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .stat{display:inline-flex;align-items:baseline;gap:7px;font-size:15px;color:var(--muted-light);letter-spacing:.03em;position:relative}
+  .stat:not(:last-child)::after{content:"";position:absolute;right:-11px;top:50%;transform:translateY(-50%);width:1px;height:14px;background:var(--line)}
+  .stat b{font-family:var(--latin);font-weight:700;font-size:26px;color:var(--yellow);line-height:1}
+  .stat.val{color:var(--yellow);font-weight:700;font-family:var(--mono);font-size:13px;letter-spacing:.05em}
+
+  .cta{
+    display:inline-flex;align-items:center;gap:12px;
+    background:var(--yellow);color:var(--ink);
+    font-weight:800;font-size:16px;letter-spacing:.06em;
+    padding:16px 30px;border-radius:999px;
+    text-decoration:none;
+    transition:transform .25s,box-shadow .25s;
+    box-shadow:0 0 0 rgba(250,234,103,0);
+  }
+  .cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(250,234,103,.28)}
+  .cta .pass{font-family:var(--latin);letter-spacing:.02em}
+  .cta svg{width:18px;height:18px}
+
+  .cta-group{display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:40px}
+  .view-schedule{
+    display:inline-flex;align-items:center;gap:9px;
+    background:none;border:none;cursor:pointer;font-family:inherit;
+    font-size:14.5px;font-weight:700;color:var(--yellow);letter-spacing:.04em;
+    padding:2px 0 4px;border-bottom:1.5px solid rgba(250,234,103,.4);
+    transition:border-color .25s,gap .25s;
+  }
+  .view-schedule:hover{border-bottom-color:var(--yellow);gap:13px}
+  .view-schedule svg{width:17px;height:17px}
+  .closing .cta-group{align-items:center}
+  .closing .view-schedule{color:var(--ink);border-bottom-color:rgba(0,0,0,.3)}
+  .closing .view-schedule:hover{border-bottom-color:var(--ink)}
+
+  /* ---------- schedule modal ---------- */
+  .sched-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.78);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);display:none;padding:22px}
+  .sched-modal.open{display:flex;align-items:center;justify-content:center;animation:schedFade .3s ease}
+  @keyframes schedFade{from{opacity:0}to{opacity:1}}
+  .sched-modal-inner{position:relative;width:100%;max-width:1040px;height:100%;max-height:92vh;background:#F7F6F2;border-radius:18px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.55)}
+  .sched-close{
+    position:absolute;top:14px;right:16px;z-index:3;
+    background:var(--yellow);color:var(--ink);border:none;cursor:pointer;
+    font-family:var(--cjk);font-size:13px;font-weight:800;letter-spacing:.06em;
+    padding:9px 16px;border-radius:999px;transition:transform .2s,box-shadow .2s;
+  }
+  .sched-close:hover{transform:scale(1.05);box-shadow:0 8px 22px rgba(250,234,103,.4)}
+  #scheduleFrame{width:100%;height:100%;border:none;display:block;background:#F7F6F2}
+
+  /* ===================================================== SECTION base */
+  section.block{padding:104px 0;position:relative}
+  .block.alt{background:#151517}
+  .block.light{background:var(--paper);color:var(--ink)}
+  .block.light .eyebrow{color:var(--ink)}
+  .block.light .eyebrow::before{background:var(--ink)}
+  .block.light .section-num{color:var(--ink)}
+  /* crisp boundary line at the top of each section */
+  .block::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(1120px,calc(100% - 56px));height:1px;background:var(--line)}
+  .block.light::before{background:var(--line-dark)}
+  .block.closing-anchor::before{display:none}
+
+  .sec-head{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+  .sec-head .section-num{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1;font-family:var(--latin);color:var(--yellow);opacity:.9}
+  .light .sec-head .section-num{color:var(--ink)}
+  .sec-head .eyebrow{margin-left:2px}
+  /* animated underline that draws in when the header reveals */
+  .sec-head::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--line),transparent);transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.2,.7,.2,1) .1s}
+  .light .sec-head::after{background:linear-gradient(90deg,var(--line-dark),transparent)}
+  .sec-head.in::after{transform:scaleX(1)}
+  .sec-title{font-size:clamp(30px,4.6vw,50px);font-weight:900;letter-spacing:.02em;line-height:1.08;margin-bottom:20px}
+  .sec-title em{font-style:normal;color:var(--yellow)}
+  .light .sec-title em{color:var(--ink);background:var(--yellow);padding:0 8px}
+  .sec-intro{max-width:680px;font-size:16px;color:var(--muted-light)}
+  .light .sec-intro{color:#55554e}
+
+  /* ---------- scroll progress bar ---------- */
+  .scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;background:transparent;z-index:100}
+  .scroll-progress .sp-bar{height:100%;width:0;background:var(--yellow);box-shadow:0 0 12px rgba(250,234,103,.6)}
+
+  /* ---------- section rail-nav (minimal ticks) ---------- */
+  .dotnav{position:fixed;right:30px;top:50%;transform:translateY(-50%);z-index:99;display:flex;flex-direction:column;gap:18px}
+  .dotnav a{position:relative;display:flex;align-items:center;justify-content:flex-end;height:8px;text-decoration:none}
+  .dotnav .dot{width:18px;height:2px;border-radius:2px;background:rgba(150,150,150,.4);transition:width .3s,background .3s}
+  .dotnav a:hover .dot,.dotnav a.on .dot{width:34px;background:var(--yellow)}
+  .dotnav .dot-label{
+    position:absolute;right:44px;white-space:nowrap;
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted-light);
+    opacity:0;transform:translateX(6px);pointer-events:none;transition:opacity .25s,transform .25s,color .25s;
+  }
+  .dotnav a:hover .dot-label{opacity:1;transform:translateX(0);color:var(--paper)}
+  .dotnav a.on .dot-label{opacity:1;transform:translateX(0);color:var(--yellow)}
+  @media (max-width:900px){.dotnav{display:none}}
+
+  /* ===================================================== CONCEPT */
+  .concept-lead{
+    font-size:clamp(24px,3.4vw,38px);
+    font-weight:800;line-height:1.35;letter-spacing:.01em;
+    max-width:900px;
+  }
+  .concept-lead mark{background:none;color:var(--yellow)}
+  .concept-body{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:44px}
+  .concept-body p{font-size:15.5px;color:var(--muted-light);line-height:1.85}
+  .concept-body p b{color:var(--paper);font-weight:700}
+  .buffet{
+    margin-top:36px;grid-column:1/-1;
+    border-left:3px solid var(--yellow);
+    padding:14px 0 14px 24px;
+    font-size:18px;font-weight:600;
+  }
+  .buffet b{color:var(--yellow)}
+
+  /* ===================================================== AUDIENCE */
+  .phase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+  .phase{
+    background:var(--paper);color:var(--ink);
+    border-radius:18px;padding:28px 26px 32px;
+    position:relative;overflow:hidden;
+    transition:transform .3s;
+  }
+  .phase:hover{transform:translateY(-6px)}
+  .phase .pk{
+    display:inline-block;font-size:14px;font-weight:800;letter-spacing:.14em;
+    color:var(--ink);background:var(--yellow);
+    padding:6px 15px;border-radius:999px;margin-bottom:16px;
+  }
+  .phase h3{font-size:25px;font-weight:900;margin:0 0 14px}
+  .phase h3 span{background:var(--yellow);padding:0 6px}
+  .phase p{font-size:14.5px;color:#4a4a44;line-height:1.8}
+  .audience-note{margin-top:40px;font-size:17px;font-weight:600;text-align:center;color:var(--paper)}
+  .audience-note b{color:var(--yellow)}
+  .roles{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
+  .role{font-family:var(--mono);font-size:12.5px;color:var(--muted-light);border:1px solid var(--line);padding:7px 14px;border-radius:999px}
+
+  /* ===================================================== COURSE ARCHITECTURE (inside benefit 01) */
+  .arch{background:#fbfaf3;border:1px solid var(--line-dark);border-radius:16px;padding:26px 26px 22px;margin-bottom:26px}
+  .arch-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .arch-head .arch-k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:#9a9a90}
+  .arch-head h4{font-size:20px;font-weight:900;color:var(--ink)}
+  .arch-head .arch-note{font-size:12.5px;font-weight:700;margin-left:auto;background:var(--ink);padding:4px 11px;border-radius:999px;color:var(--yellow)}
+  .tri-wrap{display:flex;justify-content:center;margin:10px 0 6px}
+  .tri-svg{width:100%;max-width:500px;height:auto;overflow:visible}
+  .tri-svg text{font-family:var(--cjk)}
+  .tri-poly{fill:var(--ink);stroke:#fbfaf3;stroke-width:4;stroke-linejoin:round}
+  .tri-mod{font-weight:900;fill:var(--yellow);letter-spacing:.04em}
+  .tri-meta{fill:rgba(255,255,255,.62);font-size:15px;font-weight:600}
+  .tri-abil{fill:var(--ink);font-weight:800;font-size:28px;letter-spacing:.05em}
+  .tri-link line{stroke:var(--ink);stroke-width:1;opacity:.22;stroke-dasharray:2 3}
+  .arch-cap{text-align:center;font-family:var(--mono);font-size:12px;color:#9a9a90;letter-spacing:.04em;margin-top:8px}
+
+  /* ===================================================== BENEFITS */
+  .ben-overview{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+  .ben-chip{
+    border:1px solid var(--line-dark);border-radius:12px;padding:16px 14px;
+    background:var(--ink);color:var(--paper);
+    transition:background .3s,color .3s,transform .3s;
+  }
+  .ben-chip:hover{background:var(--yellow);color:var(--ink);transform:translateY(-3px)}
+  .ben-chip .bn{font-family:var(--latin);font-weight:700;font-size:13px;opacity:.7}
+  .ben-chip h4{font-size:15px;font-weight:800;margin-top:6px;line-height:1.3}
+  .ben-chip .bmeta{font-family:var(--mono);font-size:10.5px;margin-top:8px;letter-spacing:.05em;opacity:.55}
+
+  /* --- benefit one : module camp --- */
+  .camp{margin-top:64px}
+  .camp-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+  .camp-num{font-family:var(--latin);font-weight:700;font-size:14px;color:var(--ink);background:var(--yellow);padding:3px 12px;border-radius:999px}
+  .camp-head h3{font-size:26px;font-weight:900}
+  .camp-quote{font-size:15px;color:#6a6a62;font-style:italic;margin-bottom:28px}
+  .module-row{
+    display:grid;grid-template-columns:200px 1fr 1fr;gap:0;
+    border:1px solid var(--line-dark);border-radius:16px;overflow:hidden;margin-bottom:16px;background:#fff;
+  }
+  .m-side{background:var(--ink);color:var(--paper);padding:24px 22px;display:flex;flex-direction:column;justify-content:center}
+  .m-side .mtag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--yellow)}
+  .m-side h4{font-size:21px;font-weight:900;margin:8px 0 6px;line-height:1.2}
+  .m-side .mabil{font-size:12.5px;color:var(--muted-light)}
+  .m-cell{padding:22px 24px;border-left:1px dashed var(--line-dark)}
+  .m-cell .phase-k{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;background:var(--ink);color:var(--yellow);padding:3px 10px;border-radius:6px;margin-bottom:6px}
+  .m-cell .phase-k.act{background:var(--yellow);color:var(--ink)}
+  .m-cell h5{font-size:16px;font-weight:800;margin-bottom:12px;color:var(--ink)}
+  .m-cell ul{list-style:none}
+  .m-cell li{font-size:13.5px;color:#4c4c46;padding-left:18px;position:relative;margin-bottom:8px;line-height:1.6}
+  .m-cell li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;background:var(--yellow);border-radius:2px}
+  .m-cell li b{color:var(--ink)}
+  .m-teacher{margin-top:12px;font-family:var(--mono);font-size:11.5px;color:#9a9a90;letter-spacing:.04em}
+
+  /* --- benefit two..eight cards --- */
+  .ben-detail{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:26px}
+  .bcard{
+    border:1px solid var(--line-dark);border-radius:16px;padding:26px 26px 28px;background:#fff;
+    transition:transform .3s,box-shadow .3s;position:relative;
+  }
+  .bcard:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.10)}
+  .bcard .bhead{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+  .bcard .bidx{font-family:var(--latin);font-weight:700;font-size:13px;color:#fff;background:var(--ink);padding:3px 10px;border-radius:999px}
+  .bcard h4{font-size:20px;font-weight:900}
+  .bcard .btimes{font-family:var(--mono);font-size:11px;color:var(--yellow-deep);letter-spacing:.06em;margin-left:auto}
+  .bcard .bq{font-size:14px;color:#7a7a72;font-style:italic;margin:6px 0 16px}
+  .bcard .bform{font-size:13px;color:#4c4c46;line-height:1.7;margin-bottom:14px}
+  .bcard .bform b{color:var(--ink)}
+  .bcard .btags{display:flex;flex-wrap:wrap;gap:8px}
+  .btag{font-size:12.5px;background:#f4f2e6;color:#3a3a34;border-radius:8px;padding:6px 11px;font-weight:600}
+  .btag.dark{background:var(--ink);color:var(--yellow)}
+
+  /* --- benefit index (formal contents list) --- */
+  .ben-index{margin-top:28px;border:1px solid var(--line-dark);border-radius:16px;overflow:hidden;background:#fff}
+  .bi-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:18px 26px;background:var(--ink);color:var(--paper)}
+  .bi-head .bi-title{font-size:16px;font-weight:900;letter-spacing:.08em}
+  .bi-head .bi-value{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--yellow)}
+  .bi-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;column-gap:0}
+  .bi-list li{
+    display:flex;align-items:baseline;gap:14px;padding:15px 26px;
+    border-top:1px solid var(--line-dark);
+  }
+  .bi-list li:nth-child(-n+2){border-top:none}
+  .bi-list li:nth-child(odd){border-right:1px solid var(--line-dark)}
+  .bi-no{font-size:13px;font-weight:800;color:var(--ink);letter-spacing:.08em;flex-shrink:0;min-width:44px}
+  .bi-name{font-size:15.5px;font-weight:700;color:var(--ink)}
+  .bi-meta{margin-left:auto;font-family:var(--mono);font-size:11px;color:#9a9a90;letter-spacing:.04em;white-space:nowrap}
+  .bi-list li.flag{background:#fbfaf3}
+  .bi-list li.flag .bi-no{color:var(--yellow-deep)}
+  .bi-list li.flag .bi-name{position:relative}
+  .bi-list li.flag .bi-name::after{content:"王牌";font-family:var(--mono);font-size:10px;font-weight:700;color:var(--ink);background:var(--yellow);padding:2px 7px;border-radius:5px;margin-left:9px;letter-spacing:.05em;vertical-align:2px}
+
+  /* --- flagship benefit --- */
+  .flagship{
+    margin-top:22px;border-radius:20px;overflow:hidden;
+    border:1.5px solid var(--ink);
+    box-shadow:0 20px 60px rgba(0,0,0,.08);
+  }
+  .flag-bar{
+    background:var(--ink);color:var(--paper);
+    padding:22px 30px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  }
+  .flag-badge{
+    font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.12em;
+    color:var(--ink);background:var(--yellow);padding:6px 14px;border-radius:999px;
+    display:inline-flex;align-items:center;gap:7px;flex-shrink:0;
+  }
+  .flag-badge .star{width:13px;height:13px}
+  .flag-bar .fb-idx{font-family:var(--latin);font-weight:700;font-size:15px;color:var(--yellow)}
+  .flag-bar h3{font-size:clamp(22px,3vw,28px);font-weight:900;letter-spacing:.02em}
+  .flag-bar .fb-times{font-family:var(--mono);font-size:12px;color:var(--muted-light);letter-spacing:.06em;margin-left:auto}
+  .flag-body{background:#fff;padding:30px}
+  .flag-body .benefit-slogan{font-size:clamp(18px,2.2vw,22px);font-weight:800;color:var(--ink);line-height:1.5;padding-left:18px;border-left:4px solid var(--yellow);margin-bottom:16px}
+  .flag-body .benefit-desc{font-size:14.5px;color:#6a6a62;line-height:1.8;margin-bottom:26px;max-width:840px}
+
+  /* --- supporting benefits --- */
+  .support-head{display:flex;align-items:baseline;gap:12px;margin:52px 0 6px}
+  .support-head .sh-k{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:#9a9a90}
+  .support-head h3{font-size:20px;font-weight:900}
+  .support-head .sh-line{flex:1;height:1px;background:var(--line-dark)}
+  .support-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+  .scard{
+    border:1px solid var(--line-dark);border-radius:16px;padding:24px 22px 24px;background:#fff;
+    display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s;
+  }
+  .scard:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.09);border-color:var(--ink)}
+  .scard .sc-head{display:flex;align-items:baseline;gap:9px;margin-bottom:8px}
+  .scard .sc-idx{font-family:var(--latin);font-weight:700;font-size:12px;color:#fff;background:var(--ink);padding:2px 9px;border-radius:999px}
+  .scard h4{font-size:18px;font-weight:900}
+  .scard .sc-times{font-family:var(--mono);font-size:10.5px;color:var(--yellow-deep);letter-spacing:.05em;margin-left:auto}
+  .scard .sc-q{font-size:13px;color:#7a7a72;font-style:italic;margin-bottom:14px;line-height:1.55}
+  .scard .sc-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto}
+  .sc-tag{font-size:11.5px;background:#f4f2e6;color:#3a3a34;border-radius:7px;padding:5px 10px;font-weight:600;line-height:1.3}
+  .scard.wide{grid-column:1/-1}
+  .scard.wide .sc-desc{font-size:14px;color:#4a4a44;line-height:1.75;margin-bottom:14px;max-width:820px}
+  .scard.wide .sc-desc b{color:var(--ink)}
+  .sc-tag.dark{background:var(--ink);color:var(--yellow)}
+
+  /* reuse: panel-lead helper still used by flag_body module rows spacing (none) */
+
+  /* ===================================================== MENTORS */
+  .mentor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+  .mentor{
+    border:1px solid var(--line);border-radius:16px;padding:24px 22px 26px;
+    background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);
+    transition:border-color .3s,transform .3s,background .3s;
+    display:flex;flex-direction:column;
+  }
+  .mentor:hover{border-color:var(--yellow);transform:translateY(-5px);background:rgba(250,234,103,.04)}
+  .mentor .mhead{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+  .mentor .mname{font-size:22px;font-weight:900;letter-spacing:.02em}
+  .mentor .mbti{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink);background:var(--yellow);padding:3px 8px;border-radius:6px}
+  .mentor .mquote{font-size:13px;color:var(--yellow);font-style:italic;margin:12px 0 16px;line-height:1.55;min-height:38px}
+  .mentor ul{list-style:none;margin-top:auto}
+  .mentor li{font-size:12.5px;color:var(--muted-light);padding-left:14px;position:relative;margin-bottom:6px;line-height:1.5}
+  .mentor li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;background:var(--yellow);border-radius:50%}
+
+  /* ===================================================== PRICING */
+  .price-block{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;margin-top:40px}
+  .price-main{background:var(--yellow);color:var(--ink);border-radius:22px;padding:44px 40px;position:relative;overflow:hidden}
+  .price-main .pv{font-family:var(--mono);font-size:14px;letter-spacing:.1em;text-decoration:line-through;opacity:.6}
+  .price-main .pnow{font-family:var(--latin);font-weight:700;font-size:clamp(60px,10vw,104px);line-height:1;margin:6px 0}
+  .price-main .pnow small{font-size:.4em;vertical-align:top;font-weight:600}
+  .price-main .prule{font-size:14px;font-weight:700;margin-top:6px}
+  .price-main .pfield{font-family:var(--mono);font-size:11px;letter-spacing:.14em;position:absolute;top:22px;right:26px;opacity:.5}
+  .price-terms h4{font-size:15px;font-weight:800;color:var(--yellow);margin-bottom:16px;letter-spacing:.04em}
+  .price-terms ul{list-style:none}
+  .price-terms li{font-size:14px;color:var(--muted-light);padding-left:22px;position:relative;margin-bottom:12px;line-height:1.7}
+  .price-terms li::before{content:"→";position:absolute;left:0;color:var(--yellow)}
+
+  /* ===================================================== FLOW */
+  .flow{display:flex;justify-content:space-between;align-items:flex-start;gap:6px;margin-top:48px}
+  .step{flex:1;position:relative;text-align:center;padding:0 6px}
+  .step-ic{
+    width:66px;height:66px;border-radius:50%;position:relative;z-index:2;
+    border:1.5px solid var(--yellow);color:var(--yellow);background:#151517;
+    display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;
+    transition:background .3s,color .3s,transform .3s,box-shadow .3s;
+  }
+  .step-ic svg{width:28px;height:28px}
+  .step:hover .step-ic{background:var(--yellow);color:var(--ink);transform:translateY(-4px);box-shadow:0 12px 30px rgba(250,234,103,.22)}
+  .step .sn{
+    position:absolute;top:-5px;right:-5px;width:24px;height:24px;border-radius:50%;
+    background:var(--yellow);color:var(--ink);border:2px solid var(--ink);
+    font-family:var(--latin);font-weight:700;font-size:12px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .step h4{font-size:16px;font-weight:800;line-height:1.4}
+  .step::after{content:"";position:absolute;top:33px;left:calc(50% + 42px);right:calc(-50% + 42px);height:2px;background:linear-gradient(90deg,var(--yellow),rgba(250,234,103,.25));opacity:.5;z-index:1}
+  .step:last-child::after{display:none}
+
+  /* ===================================================== CLOSING */
+  .closing{background:var(--yellow);color:var(--ink);text-align:center;padding:110px 0}
+  .closing .ctit{font-size:clamp(34px,6vw,68px);font-weight:900;line-height:1.1;letter-spacing:.02em}
+  .closing .cslogan{font-size:clamp(20px,3.4vw,32px);font-weight:800;margin-top:20px}
+  .closing .cslogan span{padding-bottom:2px}
+  .closing .cta{background:var(--ink);color:var(--yellow)}
+  .closing .cta:hover{box-shadow:0 14px 40px rgba(0,0,0,.25)}
+
+  /* ===================================================== FOOTER */
+  footer{background:var(--ink);color:var(--muted);text-align:center;padding:40px 0;font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+  footer b{color:var(--paper)}
+
+  /* ===================================================== RESPONSIVE */
+  @media (max-width:860px){
+    section.block{padding:76px 0}
+    .hero{padding:92px 0 56px}
+    .masthead{margin-bottom:40px}
+    .hero-title{font-size:clamp(50px,15vw,90px)}
+    .phase-grid,.concept-body{grid-template-columns:1fr}
+    .cycle{max-width:360px}
+    .ben-overview{grid-template-columns:repeat(2,1fr)}
+    .support-grid{grid-template-columns:repeat(2,1fr)}
+    .ben-detail{grid-template-columns:1fr}
+    .mentor-grid{grid-template-columns:repeat(2,1fr)}
+    .module-row{grid-template-columns:1fr}
+    .m-cell{border-left:none;border-top:1px dashed var(--line-dark)}
+    /* give the architecture triangle more width on phones */
+    .flag-body{padding:20px 14px}
+    .arch{padding:18px 12px}
+    .tri-svg{max-width:100%}
+    .arch-head{gap:8px}
+    .arch-head .arch-note{margin-left:0}
+    .bi-list{grid-template-columns:1fr}
+    .bi-list li{border-right:none !important}
+    .bi-list li{border-top:1px solid var(--line-dark)}
+    .bi-list li:first-child{border-top:none}
+    .bi-list li:nth-child(2){border-top:1px solid var(--line-dark)}
+    .price-block{grid-template-columns:1fr}
+    .flow{flex-direction:column;gap:18px}
+    .step{display:flex;align-items:center;gap:16px;text-align:left;padding:0}
+    .step-ic{margin-bottom:0;flex-shrink:0}
+    .step::after{display:none}
+    .sec-title{font-size:clamp(28px,7vw,42px)}
+  }
+  @media (max-width:460px){
+    .ben-overview,.mentor-grid{grid-template-columns:1fr}
+    .support-grid{grid-template-columns:1fr}
+    .hero-stats{gap:10px 18px}
+    .stat:not(:last-child)::after{display:none}
+    .cycle{max-width:300px}
+    .cy-node{width:100px}
+    .cy-ic{width:50px;height:50px}
+    .cy-ic svg{width:24px;height:24px}
+    .cy-name{font-size:15px}
+    .cy-sub{font-size:10px}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" aria-hidden="true"><div class="sp-bar"></div></div>
+
+<nav class="dotnav" aria-label="章节导航">
+  <a href="#concept" data-sec="concept"><span class="dot-label">产品概念</span><span class="dot"></span></a>
+  <a href="#audience" data-sec="audience"><span class="dot-label">面向人群</span><span class="dot"></span></a>
+  <a href="#benefits" data-sec="benefits"><span class="dot-label">产品权益</span><span class="dot"></span></a>
+  <a href="#mentors" data-sec="mentors"><span class="dot-label">交付团队</span><span class="dot"></span></a>
+  <a href="#pricing" data-sec="pricing"><span class="dot-label">产品定价</span><span class="dot"></span></a>
+  <a href="#flow" data-sec="flow"><span class="dot-label">报名流程</span><span class="dot"></span></a>
+</nav>
+
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <div class="masthead">
+      <div class="brand-lockup">
+        <span class="brand-names"><b>白熊良币厂牌</b><i>WHITE BEAR LABEL</i></span>
+      </div>
+      <div class="brand-slogan">让好人值得 · 让好事发生</div>
+    </div>
+
+    <div class="hero-kick">2026 · 年度旗舰项目 · FLAGSHIP</div>
+    <h1 class="hero-title"><span class="tl-solid">创变者</span><span class="tl-sub">计划</span></h1>
+    <div class="hero-en">CHANGE · MAKER · PROGRAM</div>
+    <div class="hero-sub-pill">多元认知进化舱</div>
+    <p class="hero-line">培养未来十年的 <span class="cm">Change&nbsp;Maker</span></p>
+
+    <div class="cycle">
+      <svg class="cycle-ring" viewBox="0 0 600 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle class="ring" cx="300" cy="290" r="190"/>
+        <path class="ar" d="M0,-7 L10,0 L0,7 Z" transform="translate(135.5,195) rotate(120)"/>
+        <path class="ar" d="M0,-7 L10,0 L0,7 Z" transform="translate(300,480) rotate(0)"/>
+        <path class="ar" d="M0,-7 L10,0 L0,7 Z" transform="translate(464.5,195) rotate(240)"/>
+      </svg>
+
+      <div class="cy-node cy-top">
+        <span class="cy-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.8 10.6c.6.6.8 1.4.8 2.4h6c0-1 .2-1.8.8-2.4A6 6 0 0 0 12 3z"/></svg></span>
+        <div class="cy-name">认知场</div>
+        <div class="cy-sub">自我探索 · 认知升级</div>
+      </div>
+      <div class="cy-node cy-bl">
+        <span class="cy-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></span>
+        <div class="cy-name">行动场</div>
+        <div class="cy-sub">定制化赋能体系</div>
+      </div>
+      <div class="cy-node cy-br">
+        <span class="cy-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M11 7 6.2 15.7M13 7l4.8 8.7M7.4 18h9.2"/></svg></span>
+        <div class="cy-name">链接场</div>
+        <div class="cy-sub">共创与社群生态</div>
+      </div>
+
+      <div class="cy-center"><b>循环进化</b></div>
+    </div>
+
+    <div class="hero-stats">
+      <span class="stat"><b>8</b>位导师</span>
+      <span class="stat"><b>6</b>大能力</span>
+      <span class="stat"><b>8</b>项权益</span>
+      <span class="stat"><b>6</b>个月交付</span>
+      <span class="stat val">总价值超 ¥20,000</span>
+    </div>
+
+    <div class="cta-group">
+      <a class="cta" href="#pricing">添加微信 <span class="pass">WBearCoach</span>，咨询课程详情</a>
+      <button class="view-schedule" onclick="openSchedule()" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4M7.5 13h3M7.5 16.5h6"/></svg>
+        查看完整课表
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== 01 CONCEPT ==================== -->
+<section class="block" id="concept">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="section-num">01</span><span class="eyebrow">产品概念</span></div>
+    <p class="concept-lead reveal">创变者计划，<mark>「创造真实改变」</mark>。这是一套专属于多重潜力者的 6 个月深度成长陪跑计划。</p>
+    <div class="concept-body">
+      <p class="reveal">我们以「自我多元认知」为核心理念，不止提供知识输入，更通过 <b>认知 + 行动 + 链接</b> 的方式，陪你真正发生改变。在这 6 个月里，你将系统提升 6 大底层能力——内核力、生命力、搞钱力、成事力、创作力、影响力。</p>
+      <p class="reveal">围绕 <b>IP、事业、日常</b> 三大主线模块，与一群同频伙伴共同探索，创造你想要的内在成长与外在成果。</p>
+      <div class="buffet reveal">这是一套属于你的 <b>自助餐式</b> 行动支持系统：行动落地，feel good，交到长期好朋友——<b>可能性由你定义</b>。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 02 AUDIENCE ==================== -->
+<section class="block alt" id="audience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="section-num">02</span><span class="eyebrow">面向人群</span></div>
+    <h2 class="sec-title reveal">专为<em>多重潜力者</em>打造</h2>
+    <p class="sec-intro reveal">如果你拥有多元兴趣、多种能力，不想被单一身份定义，渴望不断探索更多可能——这里就是属于你的成长场域。多重潜力者常见的三种需求，<b style="color:var(--paper)">无论你属于哪一种</b>，都能在这里被回应：</p>
+
+    <div class="phase-grid">
+      <div class="phase reveal">
+        <div class="pk">整合期</div>
+        <h3>梳理<span>多元方向</span></h3>
+        <p>拥有很多想法，却不知道如何聚焦或整合。通过系统认知与行动实践，链接自身多元特质，找到成长路径，打开无限可能。</p>
+      </div>
+      <div class="phase reveal">
+        <div class="pk">跃迁期</div>
+        <h3>打造<span>价值影响力</span></h3>
+        <p>希望突破事业瓶颈，创造并升级个人品牌 / 个人业务，将特质、热爱、能力转化为长期可持续的事业系统和商业价值。</p>
+      </div>
+      <div class="phase reveal">
+        <div class="pk">创造期</div>
+        <h3>实现<span>内外一致</span></h3>
+        <p>不止追求单点成功，而是希望拥有更强的自我内核、更自由的生活方式，以及有钱、有闲、有爱的人生选择。</p>
+      </div>
+    </div>
+
+    <p class="audience-note reveal">职场进阶者 / 自由职业者 / 个人创业者 / 团队管理者 / 持续成长的探索者——<br>只要你相信 <b>人生不止一种答案</b>，欢迎加入这场 6 个月深度成长旅程。</p>
+  </div>
+</section>
+
+<!-- ==================== 03 BENEFITS ==================== -->
+<section class="block light" id="benefits">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="section-num">03</span><span class="eyebrow">产品权益 · Make Change!</span></div>
+    <h2 class="sec-title reveal">加入创变者，你享受的 <em>8 项权益</em></h2>
+
+    <!-- overview ledger : lets the count "8" land instantly -->
+    <div class="ben-index reveal">
+      <div class="bi-head">
+        <span class="bi-title">八项权益 · 完整清单</span>
+        <span class="bi-value">总价值 ¥20,000+</span>
+      </div>
+      <ol class="bi-list">
+        <li class="flag"><span class="bi-no">权益一</span><span class="bi-name">创变进化模块营</span><span class="bi-meta">3 模块 · 6 个月</span></li>
+        <li><span class="bi-no">权益二</span><span class="bi-name">导师一对一支持</span><span class="bi-meta">2 次 1V1</span></li>
+        <li><span class="bi-no">权益三</span><span class="bi-name">白熊每月答疑会</span><span class="bi-meta">6 次</span></li>
+        <li><span class="bi-no">权益四</span><span class="bi-name">同频行动碰碰会</span><span class="bi-meta">3 次</span></li>
+        <li><span class="bi-no">权益五</span><span class="bi-name">认知共振大社群</span><span class="bi-meta">6 个月</span></li>
+        <li><span class="bi-no">权益六</span><span class="bi-name">创变者专属小群</span><span class="bi-meta">3V1</span></li>
+        <li><span class="bi-no">权益七</span><span class="bi-name">成长可视化系统</span><span class="bi-meta">1 份</span></li>
+        <li><span class="bi-no">权益八</span><span class="bi-name">原地出道打磨会</span><span class="bi-meta">1 次</span></li>
+      </ol>
+    </div>
+
+    <!-- FLAGSHIP : always-expanded hero benefit -->
+    <div class="flagship reveal">
+      <div class="flag-bar">
+        <span class="flag-badge"><svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"/></svg>王牌权益 · CORE</span>
+        <span class="fb-idx">01</span>
+        <h3>创变进化模块营</h3>
+        <span class="fb-times">3 模块 · 6 个月 · 认知月 × 行动月</span>
+      </div>
+      <div class="flag-body">
+        <p class="benefit-slogan">用认知和行动革新，在不确定性中创造确定的价值。</p>
+        <p class="benefit-desc">3 大模块各 2 个月，含认知月 + 行动月，嘉宾实操课结合 AI 与前沿干货，手把手教你将奇思妙想落地。</p>
+
+        <div class="arch">
+          <div class="arch-head">
+            <span class="arch-k">课程架构</span>
+            <h4>三大模块 · 六大能力</h4>
+            <span class="arch-note">六力并列 · 缺一不可</span>
+          </div>
+          <div class="tri-wrap">
+            <svg class="tri-svg" viewBox="0 0 720 640" xmlns="http://www.w3.org/2000/svg">
+              <polygon class="tri-poly" points="360,54 214,296 506,296"/>
+              <polygon class="tri-poly" points="68,538 214,296 360,538"/>
+              <polygon class="tri-poly" points="506,296 652,538 360,538"/>
+              <text class="tri-mod" x="360" y="205" text-anchor="middle" font-size="40">自我</text>
+              <text class="tri-meta" x="360" y="232" text-anchor="middle">我享福 · 日常</text>
+              <text class="tri-mod" x="216" y="452" text-anchor="middle" font-size="34">事业</text>
+              <text class="tri-meta" x="216" y="476" text-anchor="middle">我可以</text>
+              <text class="tri-mod" x="504" y="452" text-anchor="middle" font-size="34">IP</text>
+              <text class="tri-meta" x="504" y="476" text-anchor="middle">我创飞</text>
+              <text class="tri-abil" x="252" y="140" text-anchor="middle">内核力</text>
+              <text class="tri-abil" x="468" y="140" text-anchor="middle">生命力</text>
+              <text class="tri-abil" x="86"  y="392" text-anchor="middle">搞钱力</text>
+              <text class="tri-abil" x="216" y="590" text-anchor="middle">成事力</text>
+              <text class="tri-abil" x="504" y="590" text-anchor="middle">创作力</text>
+              <text class="tri-abil" x="634" y="392" text-anchor="middle">影响力</text>
+              <g class="tri-link">
+                <line x1="252" y1="150" x2="300" y2="205"/>
+                <line x1="468" y1="150" x2="420" y2="205"/>
+                <line x1="110" y1="392" x2="170" y2="420"/>
+                <line x1="216" y1="560" x2="216" y2="520"/>
+                <line x1="504" y1="560" x2="504" y2="520"/>
+                <line x1="610" y1="392" x2="550" y2="420"/>
+              </g>
+            </svg>
+          </div>
+          <p class="arch-cap">下面按模块展开每一块的「认知月 × 行动月」交付 ↓</p>
+        </div>
+
+        <div class="module-row">
+          <div class="m-side"><span class="mtag">自我模块 · 我享福</span><h4>创造更好的日常</h4><span class="mabil">内核力 × 生命力</span></div>
+          <div class="m-cell">
+            <span class="phase-k">认知月</span>
+            <h5>发掘阳光健康的日常</h5>
+            <ul>
+              <li><b>1.1 多元能量管理</b>：建立不靠意志力的生命力系统</li>
+              <li><b>1.2 内在特质解码</b>：找到真实自我的核心驱动</li>
+            </ul>
+            <div class="m-teacher">讲师 · 白熊、Meya</div>
+          </div>
+          <div class="m-cell">
+            <span class="phase-k act">行动月</span>
+            <h5>形成自我说明书</h5>
+            <ul>
+              <li><b>特质挖掘行动</b>：通过自我探索与反馈，定位核心特质与优势</li>
+              <li><b>自我说明书输出</b>：形成「我是谁 · 我要去哪 · 如何抵达」的个人文档</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="module-row">
+          <div class="m-side"><span class="mtag">事业模块 · 我可以</span><h4>成就自己的事业</h4><span class="mabil">搞钱力 × 成事力</span></div>
+          <div class="m-cell">
+            <span class="phase-k">认知月</span>
+            <h5>从想赚钱到会赚钱</h5>
+            <ul>
+              <li><b>2.1 产品化</b>：把你的经验变成产品</li>
+              <li><b>2.2 商业化</b>：构建可验证的变现闭环</li>
+            </ul>
+            <div class="m-teacher">讲师 · 白熊、Lena、曼琪</div>
+          </div>
+          <div class="m-cell">
+            <span class="phase-k act">行动月</span>
+            <h5>升级自己的个人业务</h5>
+            <ul>
+              <li><b>产品形态搭建</b>：整合自我特质，设计真实可交付的闭环</li>
+              <li><b>个人业务升级</b>：基于当下业务找到突破点，完成优化文档</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="module-row">
+          <div class="m-side"><span class="mtag">IP 模块 · 我创飞</span><h4>打造自己的 IP</h4><span class="mabil">创作力 × 影响力</span></div>
+          <div class="m-cell">
+            <span class="phase-k">认知月</span>
+            <h5>掌握 IP 输出方法论</h5>
+            <ul>
+              <li><b>3.1 向内探索</b>：挖掘独特价值与观点源泉</li>
+              <li><b>3.2 向外表达</b>：让想法清晰有力地传达，达成商业成果</li>
+            </ul>
+            <div class="m-teacher">讲师 · 白熊、紫璇</div>
+          </div>
+          <div class="m-cell">
+            <span class="phase-k act">行动月</span>
+            <h5>打磨自己的个人故事</h5>
+            <ul>
+              <li><b>个人故事创作</b>：完成一篇呈现独特价值的文字作品</li>
+              <li><b>30 秒个人故事片</b>：策划并拍摄你的首支个人微纪录片</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- supporting benefits 02-08 -->
+    <div class="support-head reveal"><span class="sh-k">PLUS ·07</span><h3>另外 7 项权益，一并交付</h3><span class="sh-line"></span></div>
+    <div class="support-grid">
+      <div class="scard reveal">
+        <div class="sc-head"><span class="sc-idx">02</span><h4>导师一对一支持</h4><span class="sc-times">2×1V1</span></div>
+        <p class="sc-q">每个人都需要自己的「专属支持系统」。</p>
+        <div class="sc-tags"><span class="sc-tag">航向咨询 · 事业与健康航向</span><span class="sc-tag">创作咨询 · 个人故事文</span></div>
+      </div>
+
+      <div class="scard reveal">
+        <div class="sc-head"><span class="sc-idx">03</span><h4>白熊每月答疑会</h4><span class="sc-times">×6</span></div>
+        <p class="sc-q">困惑越深，突破越大，每个问题都是潜在的机会点。</p>
+        <div class="sc-tags"><span class="sc-tag">定价与边界</span><span class="sc-tag">曝光与成交</span><span class="sc-tag">启动与拖延</span><span class="sc-tag">能量与休息</span><span class="sc-tag">关系与边界</span></div>
+      </div>
+
+      <div class="scard reveal">
+        <div class="sc-head"><span class="sc-idx">04</span><h4>同频行动碰碰会</h4><span class="sc-times">×3</span></div>
+        <p class="sc-q">值得庆祝的、卡住的、想求助的——都带来，行动不孤单。</p>
+        <div class="sc-tags"><span class="sc-tag">Orientation 迎新</span><span class="sc-tag">Celebration 展示</span><span class="sc-tag">Reflection 反思</span><span class="sc-tag">Need Help 求助</span></div>
+      </div>
+
+      <div class="scard reveal">
+        <div class="sc-head"><span class="sc-idx">05</span><h4>认知共振大社群</h4><span class="sc-times">6 个月</span></div>
+        <p class="sc-q">很酷的人，需要与更酷的人为伍。</p>
+        <div class="sc-tags"><span class="sc-tag">创变者小讲堂 · 每周学员分享</span><span class="sc-tag">线下认知跃迁日 · 全国据点</span></div>
+      </div>
+
+      <div class="scard reveal">
+        <div class="sc-head"><span class="sc-idx">06</span><h4>创变者专属小群</h4><span class="sc-times">3V1</span></div>
+        <p class="sc-q">你的线上有求必应屋，看见你所有成长。</p>
+        <div class="sc-tags"><span class="sc-tag">3V1 成长导师 · 精准匹配</span><span class="sc-tag">厂牌严选导师 · 100% 看见</span></div>
+      </div>
+
+      <div class="scard reveal">
+        <div class="sc-head"><span class="sc-idx">07</span><h4>成长可视化系统</h4><span class="sc-times">1 份</span></div>
+        <p class="sc-q">每个人都应该有一份自己的年终报告。</p>
+        <div class="sc-tags"><span class="sc-tag">专属成长手册</span><span class="sc-tag">年度白皮书</span></div>
+      </div>
+
+      <div class="scard wide reveal">
+        <div class="sc-head"><span class="sc-idx">08</span><h4>原地出道打磨会</h4><span class="sc-times">1 次</span></div>
+        <p class="sc-q">策划人生第一次「艺术展」，而你就是展品本身。</p>
+        <p class="sc-desc"><b>交付形式：</b>主题工作坊 + 72 小时组队挑战 + 打磨指导。产出「个人故事」文字一篇、「个人 30S 微纪录片」脚本 + 视频一部。成功完成者将作为厂牌代表，参与联名空间的年度「创变者展」。<span style="color:#9a9a90"> * 厂牌负责工作坊教学关键点 + 导师修改意见，而非代写逐字稿。</span></p>
+        <div class="sc-tags"><span class="sc-tag">舞台展示 · 组内首秀</span><span class="sc-tag">直播连麦 · 更大受众</span><span class="sc-tag">创变者展 · 年度收官</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MENTORS ==================== -->
+<section class="block" id="mentors">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">交付团队 · Make Change!</span></div>
+    <h2 class="sec-title reveal">厂牌<em>多元导师团队</em></h2>
+    <p class="sec-intro reveal">8 位横跨教育、AI、内容、商业的多重潜力者，陪你把奇思妙想落地成真实成果。</p>
+
+    <div class="mentor-grid">
+      <div class="mentor reveal">
+        <div class="mhead"><div class="mname">白熊</div><div class="mbti">ENFP</div></div>
+        <div class="mquote">「Feel Good & Be Happy」</div>
+        <ul><li>白熊良币厂牌创始人</li><li>创变者计划发起人</li><li>多重潜力者教练 · Make it happen</li><li>捍卫可持续的生命力与创造力</li></ul>
+      </div>
+      <div class="mentor reveal">
+        <div class="mhead"><div class="mname">紫璇</div><div class="mbti">INFJ</div></div>
+        <div class="mquote">「带着担忧害怕焦虑，依然可以继续行动」</div>
+        <ul><li>厂牌联合创始人 · 内容&流量负责人</li><li>清华硕士，前互联网大厂工程师</li><li>推动 3 款千元级产品落地</li><li>创作 10 万+ 字，变现六位数</li></ul>
+      </div>
+      <div class="mentor reveal">
+        <div class="mhead"><div class="mname">亦锦</div><div class="mbti">INFP</div></div>
+        <div class="mquote">「Creating the life of your dream」</div>
+        <ul><li>百万 GMV 课程制作人</li><li>前 AI + 教育产品经理</li><li>孵化 1K 粉变现六位数账号</li><li>哥伦比亚大学硕士 · 低成本旅居欧洲</li></ul>
+      </div>
+      <div class="mentor reveal">
+        <div class="mhead"><div class="mname">Lena</div><div class="mbti">ISFJ</div></div>
+        <div class="mquote">「人生是一场温暖又深刻的电影」</div>
+        <ul><li>教育学博士生 · 北欧交换</li><li>发表论文 10 篇，国际顶会 3 篇</li><li>小红书 1K 粉变现五位数</li><li>带领 50+ 创变者从 0 做课程</li></ul>
+      </div>
+      <div class="mentor reveal">
+        <div class="mhead"><div class="mname">Meya</div><div class="mbti">ISFP</div></div>
+        <div class="mquote">「存在 · 体验 · 创造」</div>
+        <ul><li>非标产品「自我关系个案」</li><li>帮助 400+ 客户提升内核力与行动力</li><li>高敏与力量并存</li><li>陪跑 30+ 一对一变现产品</li></ul>
+      </div>
+      <div class="mentor reveal">
+        <div class="mhead"><div class="mname">曼琪</div><div class="mbti">ENFJ</div></div>
+        <div class="mquote">「创造你的生命道路」</div>
+        <ul><li>顶级操盘团队内容负责人</li><li>7 天裂变 3 万人</li><li>9.9 升单百万</li><li>仅靠私域变现十几万 · 定居爱尔兰</li></ul>
+      </div>
+      <div class="mentor reveal">
+        <div class="mhead"><div class="mname">米尼</div><div class="mbti">ENFJ</div></div>
+        <div class="mquote">「会用 AI 是组织管理能力的体现」</div>
+        <ul><li>哥大硕士 → 前企业高管 → All in AI</li><li>武汉 AI 圈联合创始人 · 字节 TRAE Fellow</li><li>百度秒哒首批超级开发者</li><li>企业 AI 培训 / 智能体定制</li></ul>
+      </div>
+      <div class="mentor reveal">
+        <div class="mhead"><div class="mname">菲比</div><div class="mbti">ENTP</div></div>
+        <div class="mquote">「AI 时代，用认知和审美破局」</div>
+        <ul><li>小红书家居博主 · 年涨粉破万</li><li>擅长户型改造、软装色彩</li><li>变现破 10W，单篇广告破 7K</li><li>指导素人做出千赞笔记并变现</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 04 PRICING ==================== -->
+<section class="block alt" id="pricing">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="section-num">04</span><span class="eyebrow">产品定价 · Make Change!</span></div>
+    <h2 class="sec-title reveal">解锁多元版本<em>创变者身份</em></h2>
+
+    <div class="price-block">
+      <div class="price-main reveal">
+        <div class="pfield">6 MONTH PASS</div>
+        <div class="pv">价值 ¥20,000+</div>
+        <div class="pnow"><small>¥</small>6888</div>
+        <div class="prule">每满 20 人，涨价 ¥200</div>
+      </div>
+      <div class="price-terms reveal">
+        <h4>// 退款与转让</h4>
+        <ul>
+          <li>开课一周后不可退款</li>
+          <li>一周后如不满意，可申请课程费用捐赠公益</li>
+          <li>可转让名额，收 10% 手续费</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 05 FLOW ==================== -->
+<section class="block" id="flow">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="section-num">05</span><span class="eyebrow">报名流程</span></div>
+    <h2 class="sec-title reveal">如何加入<em>「创变者」</em></h2>
+
+    <div class="flow">
+      <div class="step reveal">
+        <div class="step-ic"><span class="sn">1</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+        </div>
+        <h4>支付订金<br>锁定名额</h4>
+      </div>
+      <div class="step reveal">
+        <div class="step-ic"><span class="sn">2</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>
+        </div>
+        <h4>提交<br>申请表</h4>
+      </div>
+      <div class="step reveal">
+        <div class="step-ic"><span class="sn">3</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+        </div>
+        <h4>确认<br>入学资格</h4>
+      </div>
+      <div class="step reveal">
+        <div class="step-ic"><span class="sn">4</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+        </div>
+        <h4>完成<br>缴费</h4>
+      </div>
+      <div class="step reveal">
+        <div class="step-ic"><span class="sn">5</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2.5 3.5L17 11H5"/></svg>
+        </div>
+        <h4>开启<br>学习旅程</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 06 CLOSING ==================== -->
+<section class="closing">
+  <div class="wrap reveal">
+    <div class="ctit">成为未来十年<br>Change Maker</div>
+    <div class="cslogan">让好人值得，<span>让好事发生</span></div>
+    <div class="cta-group">
+      <a class="cta" href="#pricing">添加微信 <span class="pass">WBearCoach</span>，咨询课程详情</a>
+      <button class="view-schedule" onclick="openSchedule()" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4M7.5 13h3M7.5 16.5h6"/></svg>
+        查看完整课表
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  白熊良币厂牌 W.B. LABEL · <b>创变者计划 2.0</b> · 多元认知进化舱 · 让好人值得让好事发生
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.12, rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // scroll progress bar
+  const spBar = document.querySelector('.sp-bar');
+  const onScroll = ()=>{
+    const h = document.documentElement;
+    const p = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+    spBar.style.width = (p*100).toFixed(2) + '%';
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // section dot-nav active state
+  const navLinks = [...document.querySelectorAll('.dotnav a')];
+  const secMap = {};
+  navLinks.forEach(a=>{ const el=document.getElementById(a.dataset.sec); if(el) secMap[a.dataset.sec]=el; });
+  const secIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const id = e.target.id;
+        navLinks.forEach(a=>a.classList.toggle('on', a.dataset.sec===id));
+      }
+    });
+  },{rootMargin:"-45% 0px -45% 0px", threshold:0});
+  Object.values(secMap).forEach(el=>secIO.observe(el));
+
+  // schedule modal
+  let schedLoaded = false;
+  window.openSchedule = function(){
+    const f = document.getElementById('scheduleFrame');
+    if(!schedLoaded){ f.srcdoc = window.__SCHED_HTML; schedLoaded = true; }
+    const m = document.getElementById('scheduleModal');
+    m.classList.add('open'); m.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeSchedule = function(){
+    const m = document.getElementById('scheduleModal');
+    if(!m) return;
+    m.classList.remove('open'); m.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  };
+  function initSchedModal(){
+    const m = document.getElementById('scheduleModal');
+    if(m){ m.addEventListener('click', e=>{ if(e.target.id==='scheduleModal') window.closeSchedule(); }); }
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') window.closeSchedule(); });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', initSchedModal);
+  else initSchedModal();
+</script>
+
+
+<!-- ==================== SCHEDULE MODAL ==================== -->
+<div id="scheduleModal" class="sched-modal" aria-hidden="true" role="dialog" aria-label="创变者计划课表">
+  <div class="sched-modal-inner">
+    <button class="sched-close" onclick="closeSchedule()" aria-label="关闭">✕ 关闭</button>
+    <iframe id="scheduleFrame" title="创变者计划 2.0 课表"></iframe>
+  </div>
+</div>
+
+<script>window.__SCHED_HTML="<!DOCTYPE html>\n<html lang=\"zh\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>\u521b\u53d8\u8005\u8ba1\u5212 2.0 \u00b7 \u65e5\u7a0b\u8868<\/title>\n<style>\n  * { box-sizing: border-box; margin: 0; padding: 0; }\n  body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif; background: #F7F6F2; color: #1A1A1A; min-height: 100vh; }\n\n  .top { background: #1A1A1A; padding: 32px 40px 28px; }\n  .top h1 { font-size: 22px; font-weight: 600; color: #FAEA67; letter-spacing: 0.02em; margin-bottom: 4px; }\n  .top p { font-size: 13px; color: rgba(255,255,255,0.5); }\n\n  .controls { background: #fff; border-bottom: 1px solid #EBEBEB; padding: 16px 40px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }\n  .controls label { font-size: 13px; color: #888; }\n  .controls select { font-size: 13px; padding: 6px 12px; border: 1px solid #DDD; border-radius: 6px; background: #fff; color: #1A1A1A; cursor: pointer; appearance: none; padding-right: 28px; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 10px center; }\n\n  .legend { display: flex; gap: 16px; flex-wrap: wrap; }\n  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #666; }\n  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }\n\n  .calendar { padding: 32px 40px; overflow-x: auto; }\n  .cal-inner { min-width: 820px; }\n  .cal-header { display: grid; grid-template-columns: 60px 70px 140px repeat(4, 1fr); gap: 1px; margin-bottom: 1px; }\n  .cal-header-cell { font-size: 11px; color: #999; font-weight: 500; padding: 8px 12px; text-transform: uppercase; letter-spacing: 0.05em; }\n\n  .month-row { display: grid; grid-template-columns: 60px 70px 140px repeat(4, 1fr); gap: 1px; margin-bottom: 1px; }\n  .month-row.dimmed { opacity: 0.3; }\n\n  .cell { background: #fff; padding: 12px; min-height: 80px; display: flex; flex-direction: column; justify-content: center; }\n  .month-cell { background: #1A1A1A; padding: 12px; display: flex; flex-direction: column; justify-content: center; min-height: 80px; }\n  .month-cell.active { background: #FAEA67; }\n  .month-cell.active .month-name { color: #1A1A1A; }\n  .month-name { font-size: 15px; font-weight: 600; color: #fff; }\n\n  .event-tag { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 3px; font-weight: 500; margin-top: 5px; }\n  .event-duoyuan { background: #FAEA67; color: #1A1A1A; }\n  .event-show { background: #FAEA67; color: #1A1A1A; }\n\n  .theme-cell { padding: 12px; min-height: 80px; display: flex; flex-direction: column; justify-content: center; }\n  .theme-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }\n  .theme-sub { font-size: 11px; opacity: 0.7; margin-bottom: 3px; }\n  .theme-tutor { font-size: 11px; opacity: 0.55; }\n\n  .week-label { color: #BBB; margin-right: 4px; font-size: 11px; }\n  .week-item { font-size: 12px; line-height: 1.7; color: #444; }\n  .new-badge { font-size: 10px; padding: 1px 6px; border-radius: 3px; background: #E1F5EE; color: #085041; margin-left: 4px; vertical-align: middle; }\n\n  .theme-xianfu { background: #EAF3DE; }\n  .theme-xianfu .theme-name { color: #3B6D11; }\n  .month1-xianfu { background: #F2F9EC; }\n  .month2-xianfu { background: #E8F5DE; }\n\n  .theme-keyii { background: #FAEEDA; }\n  .theme-keyii .theme-name { color: #633806; }\n  .month1-keyii { background: #FDF5EA; }\n  .month2-keyii { background: #FAEEDD; }\n\n  .theme-chuangfei { background: #EEEDFE; }\n  .theme-chuangfei .theme-name { color: #3C3489; }\n  .month1-chuangfei { background: #F5F4FF; }\n  .month2-chuangfei { background: #ECEAFD; }\n\n  .module-tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 3px; margin-bottom: 5px; background: #1A1A1A; color: #FAEA67; }\n  .stage-label { font-size: 11px; font-weight: 600; color: #888; }\n\n  .dot-xianfu { background: #639922; }\n  .dot-keyii { background: #EF9F27; }\n  .dot-chuangfei { background: #7F77DD; }\n<\/style>\n<\/head>\n<body>\n\n<div class=\"top\">\n  <h1>\u521b\u53d8\u8005\u8ba1\u5212 2.0 \u00b7 \u5e74\u5ea6\u65e5\u7a0b<\/h1>\n  <p>\u6bcf\u53cc\u67081\u53f7\u53ef\u5165\u5b66 \u00b7 6\u4e2a\u6708\u5b8c\u6574\u5468\u671f<\/p>\n<\/div>\n\n<div class=\"controls\">\n  <label>\u6211\u7684\u5165\u5b66\u6708\u4efd\uff1a<\/label>\n  <select id=\"startMonth\" onchange=\"render()\">\n    <option value=\"\">\u2014 \u9009\u62e9\u5165\u5b66\u6708\u4efd \u2014<\/option>\n    <option value=\"2026-9\">2026\u5e74 9\u6708<\/option>\n    <option value=\"2026-11\">2026\u5e74 11\u6708<\/option>\n    <option value=\"2027-1\">2027\u5e74 1\u6708<\/option>\n    <option value=\"2027-3\">2027\u5e74 3\u6708<\/option>\n    <option value=\"2027-5\">2027\u5e74 5\u6708<\/option>\n    <option value=\"2027-7\">2027\u5e74 7\u6708<\/option>\n  <\/select>\n  <div class=\"legend\">\n    <div class=\"legend-item\"><div class=\"legend-dot dot-xianfu\"><\/div>\u81ea\u6211\u6a21\u5757\uff08\u5185\u6838\u529b\u00d7\u751f\u547d\u529b\uff09<\/div>\n    <div class=\"legend-item\"><div class=\"legend-dot dot-keyii\"><\/div>\u4e8b\u4e1a\u6a21\u5757\uff08\u641e\u94b1\u529b\u00d7\u6210\u4e8b\u529b\uff09<\/div>\n    <div class=\"legend-item\"><div class=\"legend-dot dot-chuangfei\"><\/div>IP\u6a21\u5757\uff08\u521b\u4f5c\u529b\u00d7\u5f71\u54cd\u529b\uff09<\/div>\n  <\/div>\n<\/div>\n\n<div class=\"calendar\">\n<div class=\"cal-inner\">\n  <div class=\"cal-header\">\n    <div class=\"cal-header-cell\">\u6708\u4efd<\/div>\n    <div class=\"cal-header-cell\">\u9636\u6bb5<\/div>\n    <div class=\"cal-header-cell\">\u4e3b\u9898<\/div>\n    <div class=\"cal-header-cell\">W1<\/div>\n    <div class=\"cal-header-cell\">W2<\/div>\n    <div class=\"cal-header-cell\">W3<\/div>\n    <div class=\"cal-header-cell\">W4<\/div>\n  <\/div>\n  <div id=\"calBody\"><\/div>\n<\/div>\n<\/div>\n\n<script>\nfunction getThemeInfo(month) {\n  const map = {\n    9:  { theme: 'xianfu',    m: 1 },\n    10: { theme: 'xianfu',    m: 2 },\n    11: { theme: 'chuangfei', m: 1 },\n    12: { theme: 'chuangfei', m: 2 },\n    1:  { theme: 'keyii',     m: 1 },\n    2:  { theme: 'keyii',     m: 2 },\n    3:  { theme: 'xianfu',    m: 1 },\n    4:  { theme: 'xianfu',    m: 2 },\n    5:  { theme: 'chuangfei', m: 1 },\n    6:  { theme: 'chuangfei', m: 2 },\n    7:  { theme: 'keyii',     m: 1 },\n    8:  { theme: 'keyii',     m: 2 },\n  };\n  return map[month];\n}\n\nconst themeInfo = {\n  xianfu:    { label: '\u6211\u4eab\u798f', sub: '\u5185\u6838\u529b \u00d7 \u751f\u547d\u529b',        module: '\u81ea\u6211\u6a21\u5757', cls: 'theme-xianfu',    m1cls: 'month1-xianfu',    m2cls: 'month2-xianfu' },\n  keyii:     { label: '\u6211\u53ef\u4ee5', sub: '\u641e\u94b1\u529b \u00d7 \u6210\u4e8b\u529b', module: '\u4e8b\u4e1a\u6a21\u5757', cls: 'theme-keyii',     m1cls: 'month1-keyii',     m2cls: 'month2-keyii' },\n  chuangfei: { label: '\u6211\u521b\u98de', sub: '\u521b\u4f5c\u529b \u00d7 \u5f71\u54cd\u529b',         module: 'IP\u6a21\u5757', cls: 'theme-chuangfei', m1cls: 'month1-chuangfei', m2cls: 'month2-chuangfei' },\n};\n\nconst monthNames = ['','1\u6708','2\u6708','3\u6708','4\u6708','5\u6708','6\u6708','7\u6708','8\u6708','9\u6708','10\u6708','11\u6708','12\u6708'];\nconst allMonths = [];\nfor (let m = 9; m <= 12; m++) allMonths.push({year:2026, month:m});\nfor (let m = 1; m <= 12; m++) allMonths.push({year:2027, month:m});\n\nfunction monthKey(y, m) { return y + '-' + m; }\nfunction addMonths(y, m, n) {\n  m = m + n;\n  while (m > 12) { m -= 12; y++; }\n  return { year: y, month: m };\n}\n\nfunction render() {\n  const sel = document.getElementById('startMonth').value;\n  let range = new Set();\n  let startKey = null;\n\n  if (sel) {\n    const parts = sel.split('-');\n    const sy = parseInt(parts[0]), sm = parseInt(parts[1]);\n    startKey = monthKey(sy, sm);\n    for (let i = 0; i < 6; i++) {\n      const r = addMonths(sy, sm, i);\n      range.add(monthKey(r.year, r.month));\n    }\n  }\n\n  let html = '';\n  let lastYear = null;\n\n  allMonths.forEach(({ year, month }) => {\n    const ti = getThemeInfo(month);\n    const theme = themeInfo[ti.theme];\n    const isM1 = ti.m === 1;\n    const key = monthKey(year, month);\n    const inRange = range.has(key);\n    const isFirst = key === startKey;\n    const isShow = month === 12;\n    const isDuoyuan = month === 3;\n\n    const dimmed = sel && !inRange ? ' dimmed' : '';\n    const activeMonth = inRange ? ' active' : '';\n    const cellCls = isM1 ? theme.m1cls : theme.m2cls;\n\n    if (year !== lastYear) {\n      if (lastYear) html += `<div style=\"height:8px;\"><\/div>`;\n      html += `<div style=\"display:grid;grid-template-columns:60px 70px 140px repeat(4,1fr);gap:1px;margin-bottom:1px;\"><div style=\"grid-column:1/-1;padding:8px 12px;font-size:11px;font-weight:600;color:#999;letter-spacing:0.05em;background:#F7F6F2;\">${year}<\/div><\/div>`;\n      lastYear = year;\n    }\n\n    // event tags on month cell\n    let eventTags = '';\n    if (isDuoyuan) eventTags += `<span class=\"event-tag event-duoyuan\">\u591a\u5143\u8282<\/span>`;\n    if (isShow) eventTags += `<span class=\"event-tag event-show\">\u521b\u53d8\u8005\u5c55<\/span>`;\n\n    let w1, w2, w3, w4;\n    if (isM1) {\n      w1 = isFirst ? `\u78b0\u78b0\u4f1a <span class=\"new-badge\">\u4f60\u7684\u5165\u5b66\u8bfe<\/span>` : '\u78b0\u78b0\u4f1a';\n      w2 = '\u7cfb\u7edf\u8bfe';\n      w3 = '\u7b54\u7591\u8bfe';\n      w4 = '\u4e92\u52a8\u8bfe';\n    } else {\n      w1 = '\u81ea\u7531\u884c\u52a8';\n      w2 = 'live \u98de\u884c\u5609\u5bbe';\n      w3 = '\u7b54\u7591\u8bfe';\n      w4 = '\u821e\u53f0\u65e5';\n    }\n\n    html += `<div class=\"month-row${dimmed}\">`;\n    html += `<div class=\"month-cell${activeMonth}\">\n      <div class=\"month-name\">${monthNames[month]}<\/div>\n      ${eventTags}\n    <\/div>`;\n    html += `<div class=\"cell ${cellCls}\" style=\"align-items:center;justify-content:center;\"><span class=\"stage-label\">${isM1 ? '\u8ba4\u77e5\u6708' : '\u884c\u52a8\u6708'}<\/span><\/div>`;\n    html += `<div class=\"theme-cell ${theme.cls}\">\n      <div class=\"module-tag\">${theme.module} \u00b7 ${theme.label}<\/div>\n      <div class=\"theme-sub\">${theme.sub}<\/div>\n    <\/div>`;\n    html += `<div class=\"cell ${cellCls}\"><span class=\"week-label\">W1<\/span><span class=\"week-item\">${w1}<\/span><\/div>`;\n    html += `<div class=\"cell ${cellCls}\"><span class=\"week-label\">W2<\/span><span class=\"week-item\">${w2}<\/span><\/div>`;\n    html += `<div class=\"cell ${cellCls}\"><span class=\"week-label\">W3<\/span><span class=\"week-item\">${w3}<\/span><\/div>`;\n    html += `<div class=\"cell ${cellCls}\"><span class=\"week-label\">W4<\/span><span class=\"week-item\">${w4}<\/span><\/div>`;\n    html += '<\/div>';\n  });\n\n  document.getElementById('calBody').innerHTML = html;\n}\n\nrender();\n<\/script>\n<\/body>\n<\/html>\n";</script>
+</body>
+</html>
