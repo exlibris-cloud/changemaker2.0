@@ -1078,7 +1078,7 @@
         <button class="tinder-arrow" id="mfanPrev" type="button" aria-label="上一位导师">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg>
         </button>
-        <span class="mfan-count"><span id="mfanIdx">1</span> / 8 位导师 · 拖动或点击箭头切换</span>
+        <span class="mfan-count"><span id="mfanIdx">1</span> / 8 位导师 · 拖拽切换查看</span>
         <button class="tinder-arrow" id="mfanNext" type="button" aria-label="下一位导师">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
         </button>
@@ -1370,7 +1370,7 @@
     stack.addEventListener('pointercancel', endDrag);
   })();
 
-  // ---------- all 8 benefits: exclusive accordion (opening one closes the rest) ----------
+  // ---------- all 8 benefits: independent accordion (opening one does NOT close the rest) ----------
   function accHead(card){ return card.querySelector('.sc-head, .flag-bar'); }
   function openAccordion(card){
     card.classList.add('open');
@@ -1388,7 +1388,6 @@
     if(!head) return;
     head.addEventListener('click', ()=>{
       const willOpen = !card.classList.contains('open');
-      allBenefitCards.forEach(c=>{ if(c!==card) closeAccordion(c); });
       willOpen ? openAccordion(card) : closeAccordion(card);
       dismissCardGlow();
     });
