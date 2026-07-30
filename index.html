@@ -113,20 +113,8 @@
   }
   .hero-title .tl-solid{color:var(--yellow);text-shadow:0 0 64px rgba(250,234,103,.22)}
   .hero-title .tl-sub{margin-left:.14em;color:var(--paper)}
-  .hero-en{font-family:var(--latin);font-weight:600;font-size:clamp(12px,1.6vw,16px);letter-spacing:.4em;color:var(--muted-light);margin-top:22px}
-  .hero-sub-pill{
-    display:inline-block;
-    margin-top:26px;
-    font-size:clamp(15px,2vw,20px);
-    letter-spacing:.32em;
-    font-weight:600;
-    color:var(--ink);
-    background:var(--yellow);
-    padding:9px 22px;
-    border-radius:999px;
-  }
   .hero-line{
-    margin-top:30px;
+    margin-top:44px;
     font-size:clamp(17px,2.3vw,24px);
     color:var(--paper);
     font-weight:500;
@@ -151,8 +139,6 @@
   .cy-node:hover .cy-ic{background:var(--yellow);color:var(--ink);transform:scale(1.07);box-shadow:0 10px 26px rgba(250,234,103,.24)}
   .cy-name{font-size:18px;font-weight:900;letter-spacing:.06em}
   .cy-sub{font-size:11.5px;color:var(--muted-light);margin-top:4px;line-height:1.4}
-  .cy-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
-  .cy-center b{display:block;font-size:18px;font-weight:900;color:var(--yellow);letter-spacing:.14em}
 
   .hero-stats{
     display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 22px;margin-top:44px;
@@ -240,6 +226,16 @@
   .sec-intro{max-width:680px;font-size:16px;color:var(--muted-light)}
   .light .sec-intro{color:#55554e}
 
+  /* --- fixes for content that assumed a dark section background,
+     now needed since 01/05 can also render as .light sections --- */
+  .light .concept-lead mark{color:var(--ink);background:var(--yellow)}
+  .light .concept-body p{color:#55554e}
+  .light .concept-body p b{color:var(--ink)}
+  .light .buffet b{color:var(--ink);background:var(--yellow);padding:1px 6px;border-radius:3px}
+  .light .price-terms h4{color:var(--ink)}
+  .light .price-terms li{color:#55554e}
+  .light .price-terms li::before{color:var(--yellow-deep)}
+
   /* ---------- scroll progress bar ---------- */
   .scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;background:transparent;z-index:100}
   .scroll-progress .sp-bar{height:100%;width:0;background:var(--yellow);box-shadow:0 0 12px rgba(250,234,103,.6)}
@@ -252,6 +248,7 @@
   .dotnav .dot-label{
     position:absolute;right:44px;white-space:nowrap;
     font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted-light);
+    background:rgba(26,26,26,.85);padding:4px 10px;border-radius:999px;
     opacity:0;transform:translateX(6px);pointer-events:none;transition:opacity .25s,transform .25s,color .25s;
   }
   .dotnav-item:hover .dot-label{opacity:1;transform:translateX(0);color:var(--paper)}
@@ -334,9 +331,10 @@
   .camp-quote{font-size:15px;color:#6a6a62;font-style:italic;margin-bottom:28px}
   .module-row{
     display:grid;grid-template-columns:200px 1fr 1fr;gap:0;
-    border:1px solid var(--line-dark);border-radius:16px;overflow:hidden;margin-bottom:16px;background:#fff;
+    padding:26px 0;
   }
-  .m-side{background:var(--ink);color:var(--paper);padding:24px 22px;display:flex;flex-direction:column;justify-content:center}
+  .module-row + .module-row{border-top:1px solid var(--line-dark)}
+  .m-side{background:var(--ink);color:var(--paper);padding:24px 22px;display:flex;flex-direction:column;justify-content:center;border-radius:14px}
   .m-side .mtag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--yellow)}
   .m-side h4{font-size:21px;font-weight:900;margin:8px 0 6px;line-height:1.2}
   .m-side .mabil{font-size:12.5px;color:var(--muted-light)}
@@ -368,33 +366,10 @@
   .btag{font-size:12.5px;background:#f4f2e6;color:#3a3a34;border-radius:8px;padding:6px 11px;font-weight:600}
   .btag.dark{background:var(--ink);color:var(--yellow)}
 
-  /* --- benefit index (formal contents list) --- */
-  .ben-index{margin-top:28px;border:1px solid var(--line-dark);border-radius:16px;overflow:hidden;background:#fff}
-  .bi-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:18px 26px;background:var(--ink);color:var(--paper)}
-  .bi-head .bi-title{font-size:16px;font-weight:900;letter-spacing:.08em}
-  .bi-head .bi-value{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--yellow)}
-  .bi-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;column-gap:0}
-  .bi-list li{border-top:1px solid var(--line-dark)}
-  .bi-list li:nth-child(-n+2){border-top:none}
-  .bi-list li:nth-child(odd){border-right:1px solid var(--line-dark)}
-  .bi-row{
-    display:flex;align-items:baseline;gap:14px;padding:15px 26px;width:100%;
-    background:none;border:none;font:inherit;text-align:left;
-    text-decoration:none;color:inherit;cursor:pointer;
-    transition:background .2s,padding-left .2s;
-  }
-  .bi-row:hover{background:#fbfaf3;padding-left:32px}
-  .bi-row:focus-visible{outline:2px solid var(--yellow-deep);outline-offset:-2px}
-  .bi-no{font-size:13px;font-weight:800;color:var(--ink);letter-spacing:.08em;flex-shrink:0;min-width:44px}
-  .bi-name{font-size:15.5px;font-weight:700;color:var(--ink)}
-  .bi-meta{margin-left:auto;font-family:var(--mono);font-size:11px;color:#9a9a90;letter-spacing:.04em;white-space:nowrap}
-  .bi-list li.flag{background:#fbfaf3}
-  .bi-list li.flag .bi-no{color:var(--yellow-deep)}
-  .bi-list li.flag .bi-name{position:relative}
-  .bi-list li.flag .bi-name::after{content:"王牌";font-family:var(--mono);font-size:10px;font-weight:700;color:var(--ink);background:var(--yellow);padding:2px 7px;border-radius:5px;margin-left:9px;letter-spacing:.05em;vertical-align:2px}
+  .ben-hint{font-family:var(--mono);font-size:12.5px;color:#8a8a80;letter-spacing:.04em;margin-top:18px}
 
   /* target highlight flash when jumped to from the index */
-  .flagship,.scard{scroll-margin-top:26px}
+  .scard{scroll-margin-top:26px}
   @keyframes benefitFlash{
     0%{box-shadow:0 0 0 0 rgba(250,234,103,0)}
     25%{box-shadow:0 0 0 6px rgba(250,234,103,.55)}
@@ -402,83 +377,139 @@
   }
   .flash-target{animation:benefitFlash 1.1s ease-out}
 
-  /* --- flagship benefit --- */
-  .flagship{
-    margin-top:22px;border-radius:20px;overflow:hidden;
-    border:1.5px solid var(--ink);
-    box-shadow:0 20px 60px rgba(0,0,0,.08);
-  }
-  .flag-bar{
-    background:var(--ink);color:var(--paper);
-    padding:22px 30px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;
-  }
-  .flag-badge{
-    font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.12em;
-    color:var(--ink);background:var(--yellow);padding:6px 14px;border-radius:999px;
-    display:inline-flex;align-items:center;gap:7px;flex-shrink:0;
-  }
-  .flag-badge .star{width:13px;height:13px}
-  .flag-bar .fb-idx{font-family:var(--latin);font-weight:700;font-size:15px;color:var(--yellow)}
-  .flag-bar h3{font-size:clamp(22px,3vw,28px);font-weight:900;letter-spacing:.02em}
-  .flag-bar .fb-times{font-family:var(--mono);font-size:12px;color:var(--muted-light);letter-spacing:.06em;margin-left:auto}
-  .flag-body{background:#fff;padding:30px}
-  .flag-body .benefit-slogan{font-size:clamp(18px,2.2vw,22px);font-weight:800;color:var(--ink);line-height:1.5;padding-left:18px;border-left:4px solid var(--yellow);margin-bottom:16px}
-  .flag-body .benefit-desc{font-size:14.5px;color:#6a6a62;line-height:1.8;margin-bottom:26px;max-width:840px}
+  .sc-crown{width:17px;height:17px;color:var(--yellow);flex-shrink:0}
+  .benefit-desc{font-size:14.5px;color:#6a6a62;line-height:1.8;margin-bottom:26px;max-width:840px}
 
-  /* --- supporting benefits --- */
-  .support-head{display:flex;align-items:baseline;gap:12px;margin:52px 0 6px}
-  .support-head .sh-k{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:#9a9a90}
-  .support-head h3{font-size:20px;font-weight:900}
-  .support-head .sh-line{flex:1;height:1px;background:var(--line-dark)}
-  .support-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:22px;align-items:start}
-  .scard{
-    border:1px solid var(--line-dark);border-radius:16px;padding:24px 22px 24px;background:#fff;
-    display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s;
+  .support-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:22px}
+
+  .scard.card-glow{
+    animation:cardGlowPulse 3.1s cubic-bezier(.45,0,.55,1) infinite;
   }
-  .scard:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.09);border-color:var(--ink)}
-  .scard .sc-head{display:flex;align-items:baseline;gap:9px;margin-bottom:8px}
-  .scard .sc-idx{font-family:var(--latin);font-weight:700;font-size:12px;color:#fff;background:var(--ink);padding:2px 9px;border-radius:999px}
-  .scard h4{font-size:18px;font-weight:900}
-  .scard .sc-times{font-family:var(--mono);font-size:10.5px;color:var(--yellow-deep);letter-spacing:.05em;margin-left:auto}
-  .scard .sc-q{font-size:13px;color:#7a7a72;font-style:italic;margin-bottom:16px;line-height:1.55}
-  .scard .sc-form{font-size:12.5px;color:#8a8a80;margin-bottom:14px;line-height:1.6}
-  .scard .sc-form b{color:#4a4a44}
+  @keyframes cardGlowPulse{
+    0%,100%{
+      box-shadow:0 0 11px 2px rgba(250,234,103,.16), 0 8px 24px rgba(0,0,0,.06);
+      border-color:rgba(250,234,103,.32);
+    }
+    25%,75%{
+      box-shadow:0 0 18px 4px rgba(250,234,103,.27), 0 8px 24px rgba(0,0,0,.06);
+      border-color:rgba(250,234,103,.62);
+    }
+    50%{
+      box-shadow:0 0 25px 6px rgba(250,234,103,.4), 0 8px 24px rgba(0,0,0,.06);
+      border-color:var(--yellow);
+    }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .scard.card-glow{animation:none}
+  }
+
+  .scard{
+    border:1px solid var(--line-dark);border-radius:16px;background:#fff;overflow:hidden;
+    transition:border-color .3s,box-shadow .3s;
+  }
+  .scard:hover{border-color:var(--ink);box-shadow:0 12px 30px rgba(0,0,0,.08)}
+  .scard.flash-target{animation:benefitFlash 1.1s ease-out}
+
+  .sc-head{
+    width:100%;display:flex;align-items:center;gap:12px;padding:19px 22px;
+    background:none;border:none;cursor:pointer;font:inherit;text-align:left;
+  }
+  .sc-head .sc-idx{font-family:var(--latin);font-weight:700;font-size:12px;color:#fff;background:var(--ink);padding:2px 9px;border-radius:999px;flex-shrink:0}
+  .sc-head h4{font-size:17px;font-weight:900;color:var(--ink)}
+  .sc-head .sc-times{font-family:var(--mono);font-size:10.5px;color:var(--yellow-deep);letter-spacing:.05em;margin-left:auto;flex-shrink:0}
+  .sc-chevron{width:15px;height:15px;flex-shrink:0;color:#b6b6ac;transition:transform .35s ease}
+  .scard.open .sc-chevron{transform:rotate(90deg);color:var(--yellow-deep)}
+  .scard.open .sc-head{background:#fbfaf3}
+
+  .sc-collapse{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s cubic-bezier(.2,.7,.2,1)}
+  .scard.open .sc-collapse{grid-template-rows:1fr}
+  .sc-collapse-inner{overflow:hidden;min-height:0}
+  .sc-body{padding:2px 22px 22px}
+  .sc-slogan{
+    font-size:15.5px;font-weight:700;font-style:italic;color:var(--ink);
+    line-height:1.6;padding-left:16px;border-left:3px solid var(--yellow);
+    margin-top:20px;margin-bottom:18px;
+  }
+  .sc-form{font-size:12.5px;color:#8a8a80;margin-bottom:14px;line-height:1.6}
+  .sc-form b{color:#4a4a44}
   .sc-points{list-style:none;display:flex;flex-direction:row;flex-wrap:wrap;gap:10px 26px}
   .sc-points li{font-size:13.5px;color:#4c4c46;line-height:1.65;padding-left:16px;position:relative;flex:1 1 260px}
   .sc-points li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;background:var(--yellow);border-radius:2px}
   .sc-points li b{color:var(--ink);font-weight:800}
-  .scard.wide{grid-column:1/-1}
-  .scard.wide .sc-desc{font-size:14px;color:#4a4a44;line-height:1.75;margin-bottom:16px;max-width:820px}
-  .scard.wide .sc-desc b{color:var(--ink)}
+  .sc-desc{font-size:14px;color:#4a4a44;line-height:1.75;margin-bottom:16px;max-width:820px}
+  .sc-desc b{color:var(--ink)}
+
+  /* --- benefit 1: same scard shell/sizing as 2-8, just an inverted "flagship" skin ---
+     (declared after the base .scard/.sc-head rules so it reliably wins over the
+     generic .scard.open .sc-head background at equal specificity) */
+  .scard-flag .sc-head{background:var(--ink)}
+  .scard-flag .sc-idx{background:var(--yellow);color:var(--ink)}
+  .scard-flag h4{color:var(--paper)}
+  .scard-flag .sc-times{color:var(--muted-light)}
+  .scard-flag .sc-chevron{color:var(--yellow)}
+  .scard-flag:hover{border-color:var(--yellow)}
+  .scard-flag.open .sc-head{background:var(--ink)}
+  .scard-flag.open .sc-chevron{color:var(--yellow)}
 
   /* reuse: panel-lead helper still used by flag_body module rows spacing (none) */
 
-  /* ===================================================== MENTORS */
-  .mentor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
-  .mentor{
-    border:1px solid var(--line);border-radius:16px;padding:24px 22px 26px;
-    background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);
-    transition:border-color .3s,transform .3s,background .3s;
-    display:flex;flex-direction:column;
+  /* ===================================================== MENTORS (fan carousel) */
+  .mfan-wrap{max-width:640px;margin:44px auto 0}
+  .mfan-stack{
+    position:relative;height:500px;touch-action:pan-y;
+    /* fan geometry, overridden by media queries below */
+    --mf-cardw:258px; --mf-cardh:470px; --mf-maxd:2;
+    --mf-x1:100px; --mf-rot1:11deg; --mf-scale1:.91; --mf-op1:.9;
+    --mf-x2:182px; --mf-rot2:19deg; --mf-scale2:.82; --mf-op2:.62;
   }
-  .mentor:hover{border-color:var(--yellow);transform:translateY(-5px);background:rgba(250,234,103,.04)}
-  .mentor .mhead{display:flex;flex-direction:column;align-items:center;text-align:center;gap:9px;margin-bottom:6px}
-  .m-avatar-wrap{
+  .mfan-card{
+    position:absolute;top:0;left:50%;width:var(--mf-cardw);height:var(--mf-cardh);margin-left:calc(var(--mf-cardw) / -2);
+    border-radius:20px;padding:24px 20px 26px;
+    background:linear-gradient(165deg,#2b2415 0%,#1f1a10 55%,#18140b 100%);
+    border:1px solid rgba(250,234,103,.24);
+    box-shadow:
+      0 24px 54px rgba(0,0,0,.5),
+      0 0 0 1px rgba(250,234,103,.05),
+      0 12px 30px rgba(130,98,20,.16);
+    display:flex;flex-direction:column;justify-content:center;overflow:hidden;
+    transition:transform .42s cubic-bezier(.19,.85,.32,1), opacity .42s ease;
+    cursor:grab;user-select:none;-webkit-user-select:none;will-change:transform,opacity;
+  }
+  .mfan-card::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(160deg,rgba(250,234,103,.09) 0%,rgba(250,234,103,0) 38%);
+  }
+  .mfan-card:active{cursor:grabbing}
+  .mfan-card.dragging{transition:none}
+  .mfan-card .mhead{display:flex;flex-direction:column;align-items:center;text-align:center;gap:9px;margin-bottom:6px;pointer-events:none}
+  .mfan-card .m-avatar-wrap{
     position:relative;width:76px;height:76px;border-radius:50%;overflow:hidden;flex-shrink:0;
     background:linear-gradient(135deg,rgba(250,234,103,.24),rgba(250,234,103,.04));
-    border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;
-    transition:border-color .3s;
+    border:1.5px solid rgba(250,234,103,.3);display:flex;align-items:center;justify-content:center;
   }
-  .mentor:hover .m-avatar-wrap{border-color:var(--yellow)}
   .m-initial{font-family:var(--cjk);font-weight:900;font-size:27px;color:rgba(250,234,103,.55);letter-spacing:.02em}
   .m-avatar{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease}
   .m-avatar.loaded{opacity:1}
-  .mentor .mname{font-size:20px;font-weight:900;letter-spacing:.02em}
-  .mentor .mbti{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink);background:var(--yellow);padding:3px 8px;border-radius:6px}
-  .mentor .mquote{font-size:13px;color:var(--yellow);font-style:italic;margin:6px 0 16px;line-height:1.55;min-height:38px;text-align:center}
-  .mentor ul{list-style:none;margin-top:auto}
-  .mentor li{font-size:12.5px;color:var(--muted-light);padding-left:14px;position:relative;margin-bottom:6px;line-height:1.5}
-  .mentor li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;background:var(--yellow);border-radius:50%}
+  .mfan-card .mname{font-size:19px;font-weight:900;letter-spacing:.02em;color:var(--paper)}
+  .mfan-card .mbti{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--ink);background:var(--yellow);padding:3px 8px;border-radius:6px}
+  .mfan-card .mquote{font-size:12.5px;color:var(--yellow);font-style:italic;margin:6px 0 14px;line-height:1.5;min-height:36px;text-align:center;pointer-events:none}
+  .mfan-card ul{list-style:none;pointer-events:none}
+  .mfan-card li{font-size:12px;color:var(--muted-light);padding-left:14px;position:relative;margin-bottom:6px;line-height:1.45}
+  .mfan-card li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;background:var(--yellow);border-radius:50%}
+
+  .mfan-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:20px}
+  .mfan-count{font-family:var(--mono);font-size:11px;color:var(--muted-light);letter-spacing:.03em}
+  .mfan-count #mfanIdx{color:var(--yellow);font-weight:700}
+
+  @media (max-width:860px){
+    .mfan-stack{height:480px; --mf-cardw:234px; --mf-cardh:454px; --mf-x1:82px; --mf-rot1:10deg; --mf-scale1:.89; --mf-op1:.87; --mf-x2:150px; --mf-rot2:17deg; --mf-scale2:.8; --mf-op2:.56}
+  }
+  @media (max-width:520px){
+    .mfan-stack{height:490px; --mf-maxd:1; --mf-cardw:210px; --mf-cardh:456px; --mf-x1:58px; --mf-rot1:9deg; --mf-scale1:.85; --mf-op1:.82}
+  }
+  @media (max-width:360px){
+    .mfan-stack{ --mf-cardw:190px; --mf-x1:46px; --mf-scale1:.83}
+  }
 
   /* ===================================================== PRICING */
   .price-block{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;margin-top:40px}
@@ -536,7 +567,6 @@
     .cycle{max-width:360px}
     .ben-overview{grid-template-columns:repeat(2,1fr)}
     .ben-detail{grid-template-columns:1fr}
-    .mentor-grid{grid-template-columns:repeat(2,1fr)}
     .module-row{grid-template-columns:1fr}
     .m-cell{border-left:none;border-top:1px dashed var(--line-dark)}
     /* give the architecture triangle more width on phones */
@@ -545,11 +575,6 @@
     .tri-svg{max-width:100%}
     .arch-head{gap:8px}
     .arch-head .arch-note{margin-left:0}
-    .bi-list{grid-template-columns:1fr}
-    .bi-list li{border-right:none !important}
-    .bi-list li{border-top:1px solid var(--line-dark)}
-    .bi-list li:first-child{border-top:none}
-    .bi-list li:nth-child(2){border-top:1px solid var(--line-dark)}
     .price-block{grid-template-columns:1fr}
     .flow{flex-direction:column;gap:18px}
     .step{display:flex;align-items:center;gap:16px;text-align:left;padding:0}
@@ -558,7 +583,7 @@
     .sec-title{font-size:clamp(28px,7vw,42px)}
   }
   @media (max-width:460px){
-    .ben-overview,.mentor-grid{grid-template-columns:1fr}
+    .ben-overview{grid-template-columns:1fr}
     .hero-stats{gap:10px 18px}
     .stat:not(:last-child)::after{display:none}
     .cycle{max-width:300px}
@@ -593,13 +618,11 @@
       <div class="brand-lockup">
         <span class="brand-names"><b>白熊良币厂牌</b><i>WHITE BEAR LABEL</i></span>
       </div>
-      <div class="brand-slogan">让好人值得 · 让好事发生</div>
+      <div class="brand-slogan">多元认知进化舱</div>
     </div>
 
-    <div class="hero-kick">2026 · 年度旗舰项目 · FLAGSHIP</div>
+    <div class="hero-kick">2026 · 年度旗舰项目</div>
     <h1 class="hero-title"><span class="tl-solid">创变者</span><span class="tl-sub">计划</span></h1>
-    <div class="hero-en">CHANGE · MAKER · PROGRAM</div>
-    <div class="hero-sub-pill">多元认知进化舱</div>
     <p class="hero-line">培养未来十年的 <span class="cm">Change&nbsp;Maker</span></p>
 
     <div class="cycle">
@@ -625,8 +648,6 @@
         <div class="cy-name">链接场</div>
         <div class="cy-sub">共创与社群生态</div>
       </div>
-
-      <div class="cy-center"><b>循环进化</b></div>
     </div>
 
     <div class="hero-stats">
@@ -663,7 +684,7 @@
 </header>
 
 <!-- ==================== 01 CONCEPT ==================== -->
-<section class="block" id="concept">
+<section class="block light" id="concept">
   <div class="wrap">
     <div class="sec-head reveal"><span class="section-num">01</span><span class="eyebrow">产品概念</span></div>
     <p class="concept-lead reveal">创变者计划，<mark>「创造真实改变」</mark>。这是一套专属于多重潜力者的 6 个月深度成长陪跑计划。</p>
@@ -707,156 +728,158 @@
 <!-- ==================== 03 BENEFITS ==================== -->
 <section class="block light" id="benefits">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="section-num">03</span><span class="eyebrow">产品权益 · Make Change!</span></div>
+    <div class="sec-head reveal"><span class="section-num">03</span><span class="eyebrow">产品权益</span></div>
     <h2 class="sec-title reveal">加入创变者，你享受的 <em>8 项权益</em></h2>
 
-    <!-- overview ledger : lets the count "8" land instantly -->
-    <div class="ben-index reveal">
-      <div class="bi-head">
-        <span class="bi-title">八项权益 · 完整清单</span>
-        <span class="bi-value">总价值 ¥20,000+</span>
-      </div>
-      <ol class="bi-list">
-        <li class="flag"><button class="bi-row" type="button" data-target="benefit-1"><span class="bi-no">权益一</span><span class="bi-name">创变进化模块营</span><span class="bi-meta">3 模块 · 6 个月</span></button></li>
-        <li><button class="bi-row" type="button" data-target="benefit-2"><span class="bi-no">权益二</span><span class="bi-name">导师一对一支持</span><span class="bi-meta">2 次 1V1</span></button></li>
-        <li><button class="bi-row" type="button" data-target="benefit-3"><span class="bi-no">权益三</span><span class="bi-name">白熊每月答疑会</span><span class="bi-meta">6 次</span></button></li>
-        <li><button class="bi-row" type="button" data-target="benefit-4"><span class="bi-no">权益四</span><span class="bi-name">同频行动碰碰会</span><span class="bi-meta">3 次</span></button></li>
-        <li><button class="bi-row" type="button" data-target="benefit-5"><span class="bi-no">权益五</span><span class="bi-name">认知共振大社群</span><span class="bi-meta">6 个月</span></button></li>
-        <li><button class="bi-row" type="button" data-target="benefit-6"><span class="bi-no">权益六</span><span class="bi-name">创变者专属小群</span><span class="bi-meta">3V1</span></button></li>
-        <li><button class="bi-row" type="button" data-target="benefit-7"><span class="bi-no">权益七</span><span class="bi-name">成长可视化系统</span><span class="bi-meta">1 份</span></button></li>
-        <li><button class="bi-row" type="button" data-target="benefit-8"><span class="bi-no">权益八</span><span class="bi-name">原地出道打磨会</span><span class="bi-meta">1 次</span></button></li>
-      </ol>
-    </div>
+    <p class="ben-hint reveal">// 8 项权益 · 总价值 ¥20,000+ · 点击标题展开详情</p>
 
-    <!-- FLAGSHIP : always-expanded hero benefit -->
-    <div class="flagship reveal" id="benefit-1">
-      <div class="flag-bar">
-        <span class="flag-badge"><svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"/></svg>王牌权益 · CORE</span>
-        <span class="fb-idx">01</span>
-        <h3>创变进化模块营</h3>
-        <span class="fb-times">3 模块 · 6 个月 · 认知月 × 行动月</span>
-      </div>
-      <div class="flag-body">
-        <p class="benefit-slogan">用认知和行动革新，在不确定性中创造确定的价值。</p>
-        <p class="benefit-desc">3 大模块各 2 个月，含认知月 + 行动月，嘉宾实操课结合 AI 与前沿干货，手把手教你将奇思妙想落地。</p>
-
-        <div class="arch">
-          <div class="arch-head">
-            <span class="arch-k">课程架构</span>
-            <h4>三大模块 · 六大能力</h4>
-            <span class="arch-note">六力并列 · 缺一不可</span>
-          </div>
-          <div class="tri-wrap">
-            <svg class="tri-svg" viewBox="0 0 720 640" xmlns="http://www.w3.org/2000/svg">
-              <polygon class="tri-poly" points="360,54 214,296 506,296"/>
-              <polygon class="tri-poly" points="68,538 214,296 360,538"/>
-              <polygon class="tri-poly" points="506,296 652,538 360,538"/>
-              <text class="tri-mod" x="360" y="205" text-anchor="middle" font-size="40">自我</text>
-              <text class="tri-meta" x="360" y="232" text-anchor="middle">我享福 · 日常</text>
-              <text class="tri-mod" x="216" y="452" text-anchor="middle" font-size="34">事业</text>
-              <text class="tri-meta" x="216" y="476" text-anchor="middle">我可以</text>
-              <text class="tri-mod" x="504" y="452" text-anchor="middle" font-size="34">IP</text>
-              <text class="tri-meta" x="504" y="476" text-anchor="middle">我创飞</text>
-              <text class="tri-abil" x="252" y="140" text-anchor="middle">内核力</text>
-              <text class="tri-abil" x="468" y="140" text-anchor="middle">生命力</text>
-              <text class="tri-abil" x="86"  y="392" text-anchor="middle">搞钱力</text>
-              <text class="tri-abil" x="216" y="590" text-anchor="middle">成事力</text>
-              <text class="tri-abil" x="504" y="590" text-anchor="middle">创作力</text>
-              <text class="tri-abil" x="634" y="392" text-anchor="middle">影响力</text>
-              <g class="tri-link">
-                <line x1="252" y1="150" x2="300" y2="205"/>
-                <line x1="468" y1="150" x2="420" y2="205"/>
-                <line x1="110" y1="392" x2="170" y2="420"/>
-                <line x1="216" y1="560" x2="216" y2="520"/>
-                <line x1="504" y1="560" x2="504" y2="520"/>
-                <line x1="610" y1="392" x2="550" y2="420"/>
-              </g>
-            </svg>
-          </div>
-          <p class="arch-cap">下面按模块展开每一块的「认知月 × 行动月」交付 ↓</p>
-        </div>
-
-        <div class="module-row">
-          <div class="m-side"><span class="mtag">自我模块 · 我享福</span><h4>创造更好的日常</h4><span class="mabil">内核力 × 生命力</span></div>
-          <div class="m-cell">
-            <span class="phase-k">认知月</span>
-            <h5>发掘阳光健康的日常</h5>
-            <ul>
-              <li><b>1.1 多元能量管理</b>：建立不靠意志力的生命力系统</li>
-              <li><b>1.2 内在特质解码</b>：找到真实自我的核心驱动</li>
-            </ul>
-            <div class="m-teacher">讲师 · 白熊、Meya</div>
-          </div>
-          <div class="m-cell">
-            <span class="phase-k act">行动月</span>
-            <h5>形成自我说明书</h5>
-            <ul>
-              <li><b>特质挖掘行动</b>：通过自我探索与反馈，定位核心特质与优势</li>
-              <li><b>自我说明书输出</b>：形成「我是谁 · 我要去哪 · 如何抵达」的个人文档</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="module-row">
-          <div class="m-side"><span class="mtag">事业模块 · 我可以</span><h4>成就自己的事业</h4><span class="mabil">搞钱力 × 成事力</span></div>
-          <div class="m-cell">
-            <span class="phase-k">认知月</span>
-            <h5>从想赚钱到会赚钱</h5>
-            <ul>
-              <li><b>2.1 产品化</b>：把你的经验变成产品</li>
-              <li><b>2.2 商业化</b>：构建可验证的变现闭环</li>
-            </ul>
-            <div class="m-teacher">讲师 · 白熊、Lena、曼琪</div>
-          </div>
-          <div class="m-cell">
-            <span class="phase-k act">行动月</span>
-            <h5>升级自己的个人业务</h5>
-            <ul>
-              <li><b>产品形态搭建</b>：整合自我特质，设计真实可交付的闭环</li>
-              <li><b>个人业务升级</b>：基于当下业务找到突破点，完成优化文档</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="module-row">
-          <div class="m-side"><span class="mtag">IP 模块 · 我创飞</span><h4>打造自己的 IP</h4><span class="mabil">创作力 × 影响力</span></div>
-          <div class="m-cell">
-            <span class="phase-k">认知月</span>
-            <h5>掌握 IP 输出方法论</h5>
-            <ul>
-              <li><b>3.1 向内探索</b>：挖掘独特价值与观点源泉</li>
-              <li><b>3.2 向外表达</b>：让想法清晰有力地传达，达成商业成果</li>
-            </ul>
-            <div class="m-teacher">讲师 · 白熊、紫璇</div>
-          </div>
-          <div class="m-cell">
-            <span class="phase-k act">行动月</span>
-            <h5>打磨自己的个人故事</h5>
-            <ul>
-              <li><b>个人故事创作</b>：完成一篇呈现独特价值的文字作品</li>
-              <li><b>30 秒个人故事片</b>：策划并拍摄你的首支个人微纪录片</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- supporting benefits 02-08 -->
-    <div class="support-head reveal"><span class="sh-k">PLUS ·07</span><h3>另外 7 项权益，一并交付</h3><span class="sh-line"></span></div>
     <div class="support-grid">
-      <div class="scard reveal" id="benefit-2">
-        <div class="sc-head"><span class="sc-idx">02</span><h4>导师一对一支持</h4><span class="sc-times">2×1V1</span></div>
-        <p class="sc-q">每个人都需要自己的「专属支持系统」。</p>
+      <div class="scard scard-flag" id="benefit-1">
+        <button class="sc-head" type="button" aria-expanded="false">
+          <span class="sc-idx">01</span>
+          <h4>创变进化模块营</h4>
+          <svg class="sc-crown" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5l4 2.5 5-6 5 6 4-2.5-1.6 9.5H4.6L3 8.5z"/><rect x="5" y="19" width="14" height="2" rx="1"/></svg>
+          <span class="sc-times">3 模块 · 6 个月</span>
+          <svg class="sc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="sc-collapse">
+          <div class="sc-collapse-inner">
+            <div class="sc-body">
+              <p class="sc-slogan">用认知和行动革新，在不确定性中创造确定的价值。</p>
+              <p class="benefit-desc">3 大模块各 2 个月，含认知月 + 行动月，嘉宾实操课结合 AI 与前沿干货，手把手教你将奇思妙想落地。</p>
+
+              <div class="arch">
+                <div class="arch-head">
+                  <span class="arch-k">课程架构</span>
+                  <h4>三大模块 · 六大能力</h4>
+                </div>
+                <div class="tri-wrap">
+                  <svg class="tri-svg" viewBox="0 0 720 640" xmlns="http://www.w3.org/2000/svg">
+                    <polygon class="tri-poly" points="360,54 214,296 506,296"/>
+                    <polygon class="tri-poly" points="68,538 214,296 360,538"/>
+                    <polygon class="tri-poly" points="506,296 652,538 360,538"/>
+                    <text class="tri-mod" x="360" y="205" text-anchor="middle" font-size="40">自我</text>
+                    <text class="tri-meta" x="360" y="232" text-anchor="middle">我享福</text>
+                    <text class="tri-mod" x="216" y="452" text-anchor="middle" font-size="34">事业</text>
+                    <text class="tri-meta" x="216" y="476" text-anchor="middle">我可以</text>
+                    <text class="tri-mod" x="504" y="452" text-anchor="middle" font-size="34">IP</text>
+                    <text class="tri-meta" x="504" y="476" text-anchor="middle">我创飞</text>
+                    <text class="tri-abil" x="252" y="140" text-anchor="middle">内核力</text>
+                    <text class="tri-abil" x="468" y="140" text-anchor="middle">生命力</text>
+                    <text class="tri-abil" x="86"  y="392" text-anchor="middle">搞钱力</text>
+                    <text class="tri-abil" x="216" y="590" text-anchor="middle">成事力</text>
+                    <text class="tri-abil" x="504" y="590" text-anchor="middle">创作力</text>
+                    <text class="tri-abil" x="634" y="392" text-anchor="middle">影响力</text>
+                    <g class="tri-link">
+                      <line x1="252" y1="150" x2="300" y2="205"/>
+                      <line x1="468" y1="150" x2="420" y2="205"/>
+                      <line x1="110" y1="392" x2="170" y2="420"/>
+                      <line x1="216" y1="560" x2="216" y2="520"/>
+                      <line x1="504" y1="560" x2="504" y2="520"/>
+                      <line x1="610" y1="392" x2="550" y2="420"/>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="module-row">
+                <div class="m-side"><span class="mtag">自我模块 · 我享福</span><h4>创造更好的日常</h4><span class="mabil">内核力 × 生命力</span></div>
+                <div class="m-cell">
+                  <span class="phase-k">认知月</span>
+                  <h5>发掘阳光健康的日常</h5>
+                  <ul>
+                    <li><b>1.1 多元特质管理</b>：建立不靠意志力的生命力系统</li>
+                    <li><b>1.2 内在特质解码</b>：找到真实自我的核心驱动</li>
+                  </ul>
+                  <div class="m-teacher">讲师 · 白熊、Meya</div>
+                </div>
+                <div class="m-cell">
+                  <span class="phase-k act">行动月</span>
+                  <h5>形成自我说明书</h5>
+                  <ul>
+                    <li><b>特质挖掘行动</b>：通过自我探索与反馈，定位核心特质与优势</li>
+                    <li><b>自我说明书输出</b>：形成「我是谁 · 我要去哪 · 如何抵达」的个人文档</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="module-row">
+                <div class="m-side"><span class="mtag">事业模块 · 我可以</span><h4>成就自己的事业</h4><span class="mabil">搞钱力 × 成事力</span></div>
+                <div class="m-cell">
+                  <span class="phase-k">认知月</span>
+                  <h5>从想赚钱到会赚钱</h5>
+                  <ul>
+                    <li><b>2.1 产品化</b>：把你的经验变成产品</li>
+                    <li><b>2.2 商业化</b>：构建可验证的变现闭环</li>
+                  </ul>
+                  <div class="m-teacher">讲师 · 白熊、Lena、曼琪</div>
+                </div>
+                <div class="m-cell">
+                  <span class="phase-k act">行动月</span>
+                  <h5>升级自己的个人业务</h5>
+                  <ul>
+                    <li><b>产品形态搭建</b>：整合自我特质，设计真实可交付的闭环</li>
+                    <li><b>个人业务升级</b>：基于当下业务找到突破点，完成优化文档</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="module-row">
+                <div class="m-side"><span class="mtag">IP 模块 · 我创飞</span><h4>打造自己的 IP</h4><span class="mabil">创作力 × 影响力</span></div>
+                <div class="m-cell">
+                  <span class="phase-k">认知月</span>
+                  <h5>掌握 IP 输出方法论</h5>
+                  <ul>
+                    <li><b>3.1 向内探索</b>：挖掘独特价值与观点源泉</li>
+                    <li><b>3.2 向外表达</b>：让想法清晰有力地传达，达成商业成果</li>
+                  </ul>
+                  <div class="m-teacher">讲师 · 白熊、紫璇</div>
+                </div>
+                <div class="m-cell">
+                  <span class="phase-k act">行动月</span>
+                  <h5>打磨自己的个人故事</h5>
+                  <ul>
+                    <li><b>个人故事创作</b>：完成一篇呈现独特价值的文字作品</li>
+                    <li><b>30 秒个人故事片</b>：策划并拍摄你的首支个人微纪录片</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scard" id="benefit-2">
+        <button class="sc-head" type="button" aria-expanded="false">
+          <span class="sc-idx">02</span>
+          <h4>导师一对一支持</h4>
+          <span class="sc-times">2×1V1</span>
+          <svg class="sc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="sc-collapse">
+          <div class="sc-collapse-inner">
+            <div class="sc-body">
+              <p class="sc-slogan">每个人都需要自己的「专属支持系统」。</p>
         <p class="sc-form"><b>交付形式：</b>自选时间，2 次 1V1，每次 1 小时腾讯会议语音支持。</p>
         <ul class="sc-points">
           <li><b>航向咨询</b> 探索你的未来半年的事业航向和健康航向</li>
           <li><b>创作咨询</b> 针对你的个人故事文等创作提供专业建议</li>
         </ul>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="scard reveal" id="benefit-3">
-        <div class="sc-head"><span class="sc-idx">03</span><h4>白熊每月答疑会</h4><span class="sc-times">×6</span></div>
-        <p class="sc-q">困惑越深，突破越大，每个问题都是潜在的机会点。</p>
+      <div class="scard" id="benefit-3">
+        <button class="sc-head" type="button" aria-expanded="false">
+          <span class="sc-idx">03</span>
+          <h4>白熊每月答疑会</h4>
+          <span class="sc-times">×6</span>
+          <svg class="sc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="sc-collapse">
+          <div class="sc-collapse-inner">
+            <div class="sc-body">
+              <p class="sc-slogan">困惑越深，突破越大，每个问题都是潜在的机会点。</p>
         <p class="sc-form"><b>交付形式：</b>每月一次高效互动式线上会议。</p>
         <ul class="sc-points">
           <li><b>定价与边界</b> 从"不好意思收钱"到清晰划出交付边界</li>
@@ -865,11 +888,21 @@
           <li><b>能量与休息</b> 识别自己的疲劳信号，学会有效休息，让行动力可持续</li>
           <li><b>关系与边界</b> 领导、伙伴、家人、亲密关系，都在每个阶段达成新的共识</li>
         </ul>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="scard reveal" id="benefit-4">
-        <div class="sc-head"><span class="sc-idx">04</span><h4>同频行动碰碰会</h4><span class="sc-times">×3</span></div>
-        <p class="sc-q">值得庆祝的、卡住的、想求助的——都带来，行动不孤单。</p>
+      <div class="scard" id="benefit-4">
+        <button class="sc-head" type="button" aria-expanded="false">
+          <span class="sc-idx">04</span>
+          <h4>同频行动碰碰会</h4>
+          <span class="sc-times">×3</span>
+          <svg class="sc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="sc-collapse">
+          <div class="sc-collapse-inner">
+            <div class="sc-body">
+              <p class="sc-slogan">值得庆祝的、卡住的、想求助的——都带来，行动不孤单。</p>
         <p class="sc-form"><b>交付形式：</b>每两月一次线上 Live，人人开麦局，与新朋友、老朋友同频链接。</p>
         <ul class="sc-points">
           <li><b>Orientation</b> 双月迎新欢迎</li>
@@ -877,47 +910,91 @@
           <li><b>Reflection</b> 聊聊我本周期的新思考</li>
           <li><b>Need Help</b> 说说我还需要什么帮助</li>
         </ul>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="scard reveal" id="benefit-5">
-        <div class="sc-head"><span class="sc-idx">05</span><h4>认知共振大社群</h4><span class="sc-times">6 个月</span></div>
-        <p class="sc-q">很酷的人，需要与更酷的人为伍。</p>
+      <div class="scard" id="benefit-5">
+        <button class="sc-head" type="button" aria-expanded="false">
+          <span class="sc-idx">05</span>
+          <h4>认知共振大社群</h4>
+          <span class="sc-times">6 个月</span>
+          <svg class="sc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="sc-collapse">
+          <div class="sc-collapse-inner">
+            <div class="sc-body">
+              <p class="sc-slogan">很酷的人，需要与更酷的人为伍。</p>
         <p class="sc-form"><b>交付形式：</b>创变者总群的社群互动。</p>
         <ul class="sc-points">
           <li><b>创变者小讲堂</b> 每周邀请 1 位学员社群分享，深度链接厂牌认证的多元人</li>
           <li><b>线下认知跃迁日</b> 全国据点（厂牌联名书店 / 共享办公空间）不定期聚会</li>
         </ul>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="scard reveal" id="benefit-6">
-        <div class="sc-head"><span class="sc-idx">06</span><h4>创变者专属小群</h4><span class="sc-times">3V1</span></div>
-        <p class="sc-q">你的线上有求必应屋，看见你所有成长。</p>
+      <div class="scard" id="benefit-6">
+        <button class="sc-head" type="button" aria-expanded="false">
+          <span class="sc-idx">06</span>
+          <h4>创变者专属小群</h4>
+          <span class="sc-times">3V1</span>
+          <svg class="sc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="sc-collapse">
+          <div class="sc-collapse-inner">
+            <div class="sc-body">
+              <p class="sc-slogan">你的线上有求必应屋，看见你所有成长。</p>
         <p class="sc-form"><b>交付形式：</b>3V1 小群，为你提供专属支持。</p>
         <ul class="sc-points">
           <li><b>3V1 成长导师</b> 精准匹配你的需求</li>
           <li><b>厂牌严选导师</b> 100% 看见你的需求</li>
         </ul>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="scard reveal" id="benefit-7">
-        <div class="sc-head"><span class="sc-idx">07</span><h4>成长可视化系统</h4><span class="sc-times">1 份</span></div>
-        <p class="sc-q">每个人都应该有一份自己的年终报告。</p>
+      <div class="scard" id="benefit-7">
+        <button class="sc-head" type="button" aria-expanded="false">
+          <span class="sc-idx">07</span>
+          <h4>成长可视化系统</h4>
+          <span class="sc-times">1 份</span>
+          <svg class="sc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="sc-collapse">
+          <div class="sc-collapse-inner">
+            <div class="sc-body">
+              <p class="sc-slogan">每个人都应该有一份自己的年终报告。</p>
         <p class="sc-form"><b>交付形式：</b>共创在线文档（AI × 导师 × 你，三方共建成长手册）。</p>
         <ul class="sc-points">
           <li><b>专属成长手册</b> 记录你的每一次认知进化与落地成果</li>
           <li><b>年度白皮书</b> 个性化成长报告，记录个人年度高光里程碑</li>
         </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="scard wide reveal" id="benefit-8">
-        <div class="sc-head"><span class="sc-idx">08</span><h4>原地出道打磨会</h4><span class="sc-times">1 次</span></div>
-        <p class="sc-q">策划人生第一次「艺术展」，而你就是展品本身。</p>
-        <p class="sc-desc"><b>交付形式：</b>主题工作坊 + 72 小时组队挑战 + 打磨指导。产出「个人故事」文字一篇、「个人 30S 微纪录片」脚本 + 视频一部。成功完成者将作为厂牌代表，参与联名空间的年度「创变者展」。<span style="color:#9a9a90"> * 厂牌负责工作坊教学关键点 + 导师修改意见，而非代写逐字稿。</span></p>
-        <ul class="sc-points">
-          <li><b>舞台展示</b> 在组内首次公开呈现阶段成果，获得真实反馈</li>
-          <li><b>直播连麦</b> 与导师直播连麦，向更大范围的受众展示你的进化</li>
-          <li><b>创变者展</b> 年度收官亮相，作为厂牌代表参与联名空间展览</li>
-        </ul>
+      <div class="scard" id="benefit-8">
+        <button class="sc-head" type="button" aria-expanded="false">
+          <span class="sc-idx">08</span>
+          <h4>原地出道打磨会</h4>
+          <span class="sc-times">1 次</span>
+          <svg class="sc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="sc-collapse">
+          <div class="sc-collapse-inner">
+            <div class="sc-body">
+              <p class="sc-slogan">策划人生第一次「艺术展」，而你就是展品本身。</p>
+              <p class="sc-desc"><b>交付形式：</b>主题工作坊 + 72 小时组队挑战 + 打磨指导。产出「个人故事」文字一篇、「个人 30S 微纪录片」脚本 + 视频一部。成功完成者将作为厂牌代表，参与联名空间的年度「创变者展」。<span style="color:#9a9a90"> * 厂牌负责工作坊教学关键点 + 导师修改意见，而非代写逐字稿。</span></p>
+              <ul class="sc-points">
+                <li><b>舞台展示</b> 在组内首次公开呈现阶段成果，获得真实反馈</li>
+                <li><b>直播连麦</b> 与导师直播连麦，向更大范围的受众展示你的进化</li>
+                <li><b>创变者展</b> 年度收官亮相，作为厂牌代表参与联名空间展览</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -926,83 +1003,94 @@
 <!-- ==================== MENTORS ==================== -->
 <section class="block" id="mentors">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="eyebrow">交付团队 · Make Change!</span></div>
+    <div class="sec-head reveal"><span class="section-num">04</span><span class="eyebrow">交付团队</span></div>
     <h2 class="sec-title reveal">厂牌<em>多元导师团队</em></h2>
     <p class="sec-intro reveal">8 位横跨教育、AI、内容、商业的多重潜力者，陪你把奇思妙想落地成真实成果。</p>
 
-    <div class="mentor-grid">
-      <div class="mentor reveal">
+<div class="mfan-wrap reveal">
+      <div class="mfan-stack" id="mentorStack">
+      <div class="mfan-card" data-i="0">
         <div class="mhead">
           <div class="m-avatar-wrap"><span class="m-initial">白</span><img class="m-avatar" src="images/导师白熊.png" alt="白熊头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
           <div class="mname">白熊</div><div class="mbti">ENFP</div>
         </div>
         <div class="mquote">「Feel Good & Be Happy」</div>
-        <ul><li>白熊良币厂牌创始人</li><li>创变者计划发起人</li><li>多重潜力者教练 · Make it happen</li><li>捍卫可持续的生命力与创造力</li></ul>
+        <ul><li>白熊良币厂牌创始人</li><li>创变者计划 ChangeMaker 发起人</li><li>多重潜力者教练 · Make it happen</li><li>友伴式成长支持引领人</li><li>捍卫可持续的生命力和创造力</li></ul>
       </div>
-      <div class="mentor reveal">
+      <div class="mfan-card" data-i="1">
         <div class="mhead">
           <div class="m-avatar-wrap"><span class="m-initial">紫</span><img class="m-avatar" src="images/导师紫璇.png" alt="紫璇头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
           <div class="mname">紫璇</div><div class="mbti">INFJ</div>
         </div>
-        <div class="mquote">「带着担忧害怕焦虑，依然可以继续行动」</div>
-        <ul><li>厂牌联合创始人 · 内容&流量负责人</li><li>清华硕士，前互联网大厂工程师</li><li>推动 3 款千元级产品落地</li><li>创作 10 万+ 字，变现六位数</li></ul>
+        <div class="mquote">「带着担忧害怕和焦虑，依然可以继续行动」</div>
+        <ul><li>白熊良币厂牌联合创始人</li><li>厂牌内容&流量负责人，专注 AI 提效</li><li>清华硕士，前互联网大厂工程师</li><li>深度参与创业团队推动 3 款千元级产品落地</li><li>持续创作 10 万+ 字自我表达，变现六位数</li></ul>
       </div>
-      <div class="mentor reveal">
+      <div class="mfan-card" data-i="2">
         <div class="mhead">
           <div class="m-avatar-wrap"><span class="m-initial">亦</span><img class="m-avatar" src="images/导师亦锦.png" alt="亦锦头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
           <div class="mname">亦锦</div><div class="mbti">INFP</div>
         </div>
         <div class="mquote">「Creating the life of your dream」</div>
-        <ul><li>百万 GMV 课程制作人</li><li>前 AI + 教育产品经理</li><li>孵化 1K 粉变现六位数账号</li><li>哥伦比亚大学硕士 · 低成本旅居欧洲</li></ul>
+        <ul><li>百万 GMV 课程制作人</li><li>前 AI + 教育产品经理</li><li>孵化 1K 粉变现六位数账号</li><li>低成本旅居欧洲实践者</li><li>哥伦比亚大学硕士</li></ul>
       </div>
-      <div class="mentor reveal">
+      <div class="mfan-card" data-i="3">
         <div class="mhead">
           <div class="m-avatar-wrap"><span class="m-initial">L</span><img class="m-avatar" src="images/导师lena.png" alt="Lena头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
           <div class="mname">Lena</div><div class="mbti">ISFJ</div>
         </div>
         <div class="mquote">「人生是一场温暖又深刻的电影」</div>
-        <ul><li>教育学博士生 · 北欧交换</li><li>发表论文 10 篇，国际顶会 3 篇</li><li>小红书 1K 粉变现五位数</li><li>带领 50+ 创变者从 0 做课程</li></ul>
+        <ul><li>教育学博士生，北欧交换</li><li>发表论文 10 篇，国际顶会 3 篇</li><li>小红书 1K 粉丝变现五位数</li><li>i 人也能吸引源源不断的用户</li><li>带领 50+ 创变者从 0 轻松制作自己的课程</li></ul>
       </div>
-      <div class="mentor reveal">
+      <div class="mfan-card" data-i="4">
         <div class="mhead">
           <div class="m-avatar-wrap"><span class="m-initial">M</span><img class="m-avatar" src="images/导师meya.png" alt="Meya头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
           <div class="mname">Meya</div><div class="mbti">ISFP</div>
         </div>
         <div class="mquote">「存在 · 体验 · 创造」</div>
-        <ul><li>非标产品「自我关系个案」</li><li>帮助 400+ 客户提升内核力与行动力</li><li>高敏与力量并存</li><li>陪跑 30+ 一对一变现产品</li></ul>
+        <ul><li>非标产品「自我关系个案」，多样化客户群体服务经验</li><li>帮助 400+ 客户提升内核力与行动力</li><li>让「内在评判」闻风丧胆，让「应该」无地自容</li><li>高敏和力量并存（主要是美丽）</li><li>从 0 到 1 陪跑 30+ 不同类型的一对一变现产品</li></ul>
       </div>
-      <div class="mentor reveal">
+      <div class="mfan-card" data-i="5">
         <div class="mhead">
           <div class="m-avatar-wrap"><span class="m-initial">曼</span><img class="m-avatar" src="images/导师曼琪.png" alt="曼琪头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
           <div class="mname">曼琪</div><div class="mbti">ENFJ</div>
         </div>
         <div class="mquote">「创造你的生命道路」</div>
-        <ul><li>顶级操盘团队内容负责人</li><li>7 天裂变 3 万人</li><li>9.9 升单百万</li><li>仅靠私域变现十几万 · 定居爱尔兰</li></ul>
+        <ul><li>顶级操盘团队内容负责人</li><li>7 天裂变 3 万人</li><li>9.9 升单百万</li><li>跨行业多潜力者，仅靠私域变现十几万</li><li>定居爱尔兰</li></ul>
       </div>
-      <div class="mentor reveal">
+      <div class="mfan-card" data-i="6">
         <div class="mhead">
           <div class="m-avatar-wrap"><span class="m-initial">米</span><img class="m-avatar" src="images/导师米尼.png" alt="米尼头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
           <div class="mname">米尼</div><div class="mbti">ENFJ</div>
         </div>
-        <div class="mquote">「会用 AI 是组织管理能力的体现」</div>
-        <ul><li>哥大硕士 → 前企业高管 → All in AI</li><li>武汉 AI 圈联合创始人 · 字节 TRAE Fellow</li><li>百度秒哒首批超级开发者</li><li>企业 AI 培训 / 智能体定制</li></ul>
+        <div class="mquote">「会用 AI 是一个人组织管理能力的体现」</div>
+        <ul><li>哥大硕士 → 前企业高管 → All in AI</li><li>武汉 AI 圈联合创始人 | 字节 TRAE Fellow</li><li>百度秒哒首批超级开发者</li><li>华科计算机学院校外导师</li><li>专注企业 AI 培训 / 智能体定制 / 私有化部署</li></ul>
       </div>
-      <div class="mentor reveal">
+      <div class="mfan-card" data-i="7">
         <div class="mhead">
           <div class="m-avatar-wrap"><span class="m-initial">菲</span><img class="m-avatar" src="images/导师菲比.png" alt="菲比头像" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()"></div>
           <div class="mname">菲比</div><div class="mbti">ENTP</div>
         </div>
         <div class="mquote">「AI 时代，用认知和审美破局」</div>
-        <ul><li>小红书家居博主 · 年涨粉破万</li><li>擅长户型改造、软装色彩</li><li>变现破 10W，单篇广告破 7K</li><li>指导素人做出千赞笔记并变现</li></ul>
+        <ul><li>24 年底勇闯小红书家居博主赛道</li><li>擅长户型改造、软装色彩搭配、装修避坑</li><li>年涨粉破万，变现破 10W，单篇广告收入破 7k</li><li>指导素人朋友做出旅游赛道数篇千赞笔记并变现</li><li>不靠天资靠努力也能做出变现力超强账号</li></ul>
+      </div>
+      </div>
+      <div class="mfan-nav">
+        <button class="tinder-arrow" id="mfanPrev" type="button" aria-label="上一位导师">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <span class="mfan-count"><span id="mfanIdx">1</span> / 8 位导师 · 拖动或点击箭头切换</span>
+        <button class="tinder-arrow" id="mfanNext" type="button" aria-label="下一位导师">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ==================== 04 PRICING ==================== -->
-<section class="block alt" id="pricing">
+<section class="block light" id="pricing">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="section-num">04</span><span class="eyebrow">产品定价 · Make Change!</span></div>
+    <div class="sec-head reveal"><span class="section-num">05</span><span class="eyebrow">产品定价</span></div>
     <h2 class="sec-title reveal">解锁多元版本<em>创变者身份</em></h2>
 
     <div class="price-block">
@@ -1027,7 +1115,7 @@
 <!-- ==================== 05 FLOW ==================== -->
 <section class="block" id="flow">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="section-num">05</span><span class="eyebrow">报名流程</span></div>
+    <div class="sec-head reveal"><span class="section-num">06</span><span class="eyebrow">报名流程</span></div>
     <h2 class="sec-title reveal">如何加入<em>「创变者」</em></h2>
 
     <div class="flow">
@@ -1096,7 +1184,7 @@
 </section>
 
 <footer>
-  白熊良币厂牌 W.B. LABEL · <b>创变者计划 2.0</b> · 多元认知进化舱 · 让好人值得让好事发生
+  白熊良币厂牌 · 2026
 </footer>
 
 <script>
@@ -1158,20 +1246,166 @@
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', initSchedModal);
   else initSchedModal();
 
-  // benefit index -> smooth-scroll to detail, with a brief highlight flash
-  // (plain buttons, no href/hash — avoids being misread as an external-navigation
-  //  attempt by sandboxed preview frames)
-  document.querySelectorAll('.bi-row').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const id = btn.dataset.target;
-      const target = document.getElementById(id);
-      if(!target) return;
-      target.scrollIntoView({behavior:'smooth', block:'start'});
-      target.classList.remove('flash-target');
-      void target.offsetWidth; // restart animation if clicked twice
-      target.classList.add('flash-target');
+  // ---------- mentor fan carousel (poker-hand style, circular) ----------
+  (function(){
+    const stack = document.getElementById('mentorStack');
+    if(!stack) return;
+    const cards = [...stack.querySelectorAll('.mfan-card')];
+    const n = cards.length;
+    let current = 0;
+    const idxLabel = document.getElementById('mfanIdx');
+
+    function cardEl(i){ return cards.find(c=>+c.dataset.i===i); }
+
+    // shortest circular distance from i to current, in range [-n/2, n/2]
+    function relPos(i){
+      let d = i - current;
+      if(d > n/2) d -= n;
+      if(d < -n/2) d += n;
+      return d;
+    }
+
+    function fanGeom(){
+      const cs = getComputedStyle(stack);
+      const num = v => parseFloat(cs.getPropertyValue(v));
+      return {
+        maxd: num('--mf-maxd'),
+        x1: num('--mf-x1'), rot1: num('--mf-rot1'), scale1: num('--mf-scale1'), op1: num('--mf-op1'),
+        x2: num('--mf-x2'), rot2: num('--mf-rot2'), scale2: num('--mf-scale2'), op2: num('--mf-op2'),
+      };
+    }
+
+    function layout(opts={}){
+      const g = fanGeom();
+      cards.forEach(el=>{
+        const i = +el.dataset.i;
+        const d = relPos(i);
+        if(opts.instant){ el.style.transition = 'none'; }
+        let x=0, rot=0, scale=1, op=1, z=5, pe='none';
+        if(d===0){ x=0; rot=0; scale=1; op=1; z=6; pe='auto'; }
+        else if(Math.abs(d)===1 && g.maxd>=1){ x=g.x1*Math.sign(d); rot=g.rot1*Math.sign(d); scale=g.scale1; op=g.op1; z=4; }
+        else if(Math.abs(d)===2 && g.maxd>=2){ x=g.x2*Math.sign(d); rot=g.rot2*Math.sign(d); scale=g.scale2; op=g.op2; z=2; }
+        else { x=(g.maxd>=2?g.x2:g.x1)*Math.sign(d||1)*1.3; rot=0; scale=.7; op=0; z=1; }
+        el.style.zIndex = z;
+        el.style.opacity = op;
+        el.style.pointerEvents = pe;
+        el.style.transform = `translateX(${x}px) rotate(${rot}deg) scale(${scale})`;
+        if(opts.instant){ void el.offsetWidth; el.style.transition = ''; }
+      });
+      if(idxLabel) idxLabel.textContent = current + 1;
+    }
+    layout({instant:true});
+    window.addEventListener('resize', ()=>layout({instant:true}));
+
+    function go(delta){
+      current = ((current + delta) % n + n) % n;
+      layout();
+    }
+    document.getElementById('mfanNext').addEventListener('click', ()=>go(1));
+    document.getElementById('mfanPrev').addEventListener('click', ()=>go(-1));
+
+    // drag physics on the front card only
+    let dragging = false, startX = 0, startY = 0, curDx = 0;
+    let lastX = 0, lastT = 0, velocity = 0;
+
+    function neighborEls(){
+      return [1,-1].map(dir => cardEl(((current + dir) % n + n) % n)).filter(Boolean);
+    }
+
+    stack.addEventListener('pointerdown', e=>{
+      const front = cardEl(current);
+      if(e.target.closest('.mfan-card') !== front) return;
+      dragging = true; curDx = 0; velocity = 0;
+      startX = e.clientX; startY = e.clientY;
+      lastX = e.clientX; lastT = performance.now();
+      // disable transition on front + both peeking neighbors so all three track the
+      // pointer instantly during the drag (only front moves 1:1, neighbors get a
+      // subtle parallax nudge below) — re-enabled together in endDrag for a smooth
+      // "slide into place" settle instead of an abrupt snap.
+      front.classList.add('dragging');
+      neighborEls().forEach(el=>el.classList.add('dragging'));
+      front.setPointerCapture(e.pointerId);
+    });
+    stack.addEventListener('pointermove', e=>{
+      if(!dragging) return;
+      const front = cardEl(current);
+      const dx = e.clientX - startX, dy = e.clientY - startY;
+      const now = performance.now();
+      const dt = now - lastT;
+      if(dt > 0){ velocity = (e.clientX - lastX) / dt; } // px per ms
+      lastX = e.clientX; lastT = now;
+      curDx = dx;
+      front.style.transform = `translate(${dx}px, ${dy*.3}px) rotate(${dx/18}deg)`;
+      // subtle parallax on the neighbors while dragging
+      const g = fanGeom();
+      [1,-1].forEach(dir=>{
+        const el = cardEl((( current + dir) % n + n) % n);
+        if(!el || el===front) return;
+        const base = dir*g.x1;
+        el.style.transform = `translateX(${base + dx*0.18}px) rotate(${dir*g.rot1}deg) scale(${g.scale1})`;
+      });
+    });
+    function endDrag(){
+      if(!dragging) return;
+      dragging = false;
+      const front = cardEl(current);
+      const neighbors = neighborEls();
+      // re-enable the CSS transition on all three now so whatever happens next
+      // (commit or snap-back) animates smoothly instead of jumping instantly
+      front.classList.remove('dragging');
+      neighbors.forEach(el=>el.classList.remove('dragging'));
+
+      const DIST_THRESHOLD = 100;   // deliberate drag distance
+      const FLICK_THRESHOLD = 0.55; // fast flick, px/ms — commits even if distance is short
+      const committed = Math.abs(curDx) > DIST_THRESHOLD || Math.abs(velocity) > FLICK_THRESHOLD;
+
+      if(committed){
+        const dir = curDx < 0 || (curDx === 0 && velocity < 0) ? 1 : -1;
+        go(dir); // dragged/flicked left -> next; right -> prev
+      } else {
+        layout(); // below threshold: transition (now re-enabled) eases back to rest
+      }
+    }
+    stack.addEventListener('pointerup', endDrag);
+    stack.addEventListener('pointercancel', endDrag);
+  })();
+
+  // ---------- all 8 benefits: exclusive accordion (opening one closes the rest) ----------
+  function accHead(card){ return card.querySelector('.sc-head, .flag-bar'); }
+  function openAccordion(card){
+    card.classList.add('open');
+    const head = accHead(card);
+    if(head) head.setAttribute('aria-expanded','true');
+  }
+  function closeAccordion(card){
+    card.classList.remove('open');
+    const head = accHead(card);
+    if(head) head.setAttribute('aria-expanded','false');
+  }
+  const allBenefitCards = [...document.querySelectorAll('.flagship, .scard')];
+  allBenefitCards.forEach(card=>{
+    const head = accHead(card);
+    if(!head) return;
+    head.addEventListener('click', ()=>{
+      const willOpen = !card.classList.contains('open');
+      allBenefitCards.forEach(c=>{ if(c!==card) closeAccordion(c); });
+      willOpen ? openAccordion(card) : closeAccordion(card);
+      dismissCardGlow();
     });
   });
+
+  // ---------- benefit-1 card itself glows to invite the first click, shown once ever ----------
+  const glowCard = document.getElementById('benefit-1');
+  function dismissCardGlow(){
+    if(!glowCard || !glowCard.classList.contains('card-glow')) return;
+    glowCard.classList.remove('card-glow');
+    try{ localStorage.setItem('wbCM_benefitHintSeen', '1'); }catch(e){}
+  }
+  if(glowCard){
+    let alreadySeen = false;
+    try{ alreadySeen = localStorage.getItem('wbCM_benefitHintSeen') === '1'; }catch(e){}
+    if(!alreadySeen) glowCard.classList.add('card-glow');
+  }
 </script>
 
 
