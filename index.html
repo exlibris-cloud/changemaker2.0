@@ -168,13 +168,23 @@
     background:var(--yellow);color:var(--ink);
     font-weight:800;font-size:16px;letter-spacing:.06em;
     padding:16px 30px;border-radius:999px;
-    text-decoration:none;
-    transition:transform .25s,box-shadow .25s;
+    text-decoration:none;cursor:default;
+    transition:box-shadow .25s;
     box-shadow:0 0 0 rgba(250,234,103,0);
   }
-  .cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(250,234,103,.28)}
+  .cta:hover{box-shadow:0 10px 28px rgba(250,234,103,.22)}
   .cta .pass{font-family:var(--latin);letter-spacing:.02em}
   .cta svg{width:18px;height:18px}
+
+  /* wechat contact card: icon + two fixed lines, never wraps mid-word */
+  .wechat-cta{padding:14px 28px;border-radius:18px;gap:14px}
+  .wechat-cta .wc-icon{width:30px;height:30px;flex-shrink:0}
+  .wechat-cta .wc-eye{fill:var(--yellow)}
+  .closing .wechat-cta .wc-eye{fill:var(--ink)}
+  .wechat-cta .wc-text{display:flex;flex-direction:column;gap:3px;text-align:left}
+  .wechat-cta .wc-line1{font-size:16px;font-weight:800;letter-spacing:.03em;white-space:nowrap}
+  .wechat-cta .wc-line1 .pass{font-size:1em}
+  .wechat-cta .wc-line2{font-size:12.5px;font-weight:600;letter-spacing:.04em;opacity:.72;white-space:nowrap}
 
   .cta-group{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:40px}
   .view-schedule{
@@ -236,16 +246,16 @@
 
   /* ---------- section rail-nav (minimal ticks) ---------- */
   .dotnav{position:fixed;right:30px;top:50%;transform:translateY(-50%);z-index:99;display:flex;flex-direction:column;gap:18px}
-  .dotnav a{position:relative;display:flex;align-items:center;justify-content:flex-end;height:8px;text-decoration:none}
+  .dotnav-item{position:relative;display:flex;align-items:center;justify-content:flex-end;height:8px;background:none;border:none;padding:0;cursor:pointer;font:inherit;text-decoration:none}
   .dotnav .dot{width:18px;height:2px;border-radius:2px;background:rgba(150,150,150,.4);transition:width .3s,background .3s}
-  .dotnav a:hover .dot,.dotnav a.on .dot{width:34px;background:var(--yellow)}
+  .dotnav-item:hover .dot,.dotnav-item.on .dot{width:34px;background:var(--yellow)}
   .dotnav .dot-label{
     position:absolute;right:44px;white-space:nowrap;
     font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted-light);
     opacity:0;transform:translateX(6px);pointer-events:none;transition:opacity .25s,transform .25s,color .25s;
   }
-  .dotnav a:hover .dot-label{opacity:1;transform:translateX(0);color:var(--paper)}
-  .dotnav a.on .dot-label{opacity:1;transform:translateX(0);color:var(--yellow)}
+  .dotnav-item:hover .dot-label{opacity:1;transform:translateX(0);color:var(--paper)}
+  .dotnav-item.on .dot-label{opacity:1;transform:translateX(0);color:var(--yellow)}
   @media (max-width:900px){.dotnav{display:none}}
 
   /* ===================================================== CONCEPT */
@@ -364,12 +374,17 @@
   .bi-head .bi-title{font-size:16px;font-weight:900;letter-spacing:.08em}
   .bi-head .bi-value{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--yellow)}
   .bi-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;column-gap:0}
-  .bi-list li{
-    display:flex;align-items:baseline;gap:14px;padding:15px 26px;
-    border-top:1px solid var(--line-dark);
-  }
+  .bi-list li{border-top:1px solid var(--line-dark)}
   .bi-list li:nth-child(-n+2){border-top:none}
   .bi-list li:nth-child(odd){border-right:1px solid var(--line-dark)}
+  .bi-row{
+    display:flex;align-items:baseline;gap:14px;padding:15px 26px;width:100%;
+    background:none;border:none;font:inherit;text-align:left;
+    text-decoration:none;color:inherit;cursor:pointer;
+    transition:background .2s,padding-left .2s;
+  }
+  .bi-row:hover{background:#fbfaf3;padding-left:32px}
+  .bi-row:focus-visible{outline:2px solid var(--yellow-deep);outline-offset:-2px}
   .bi-no{font-size:13px;font-weight:800;color:var(--ink);letter-spacing:.08em;flex-shrink:0;min-width:44px}
   .bi-name{font-size:15.5px;font-weight:700;color:var(--ink)}
   .bi-meta{margin-left:auto;font-family:var(--mono);font-size:11px;color:#9a9a90;letter-spacing:.04em;white-space:nowrap}
@@ -377,6 +392,15 @@
   .bi-list li.flag .bi-no{color:var(--yellow-deep)}
   .bi-list li.flag .bi-name{position:relative}
   .bi-list li.flag .bi-name::after{content:"王牌";font-family:var(--mono);font-size:10px;font-weight:700;color:var(--ink);background:var(--yellow);padding:2px 7px;border-radius:5px;margin-left:9px;letter-spacing:.05em;vertical-align:2px}
+
+  /* target highlight flash when jumped to from the index */
+  .flagship,.scard{scroll-margin-top:26px}
+  @keyframes benefitFlash{
+    0%{box-shadow:0 0 0 0 rgba(250,234,103,0)}
+    25%{box-shadow:0 0 0 6px rgba(250,234,103,.55)}
+    100%{box-shadow:0 0 0 0 rgba(250,234,103,0)}
+  }
+  .flash-target{animation:benefitFlash 1.1s ease-out}
 
   /* --- flagship benefit --- */
   .flagship{
@@ -551,12 +575,12 @@
 <div class="scroll-progress" aria-hidden="true"><div class="sp-bar"></div></div>
 
 <nav class="dotnav" aria-label="章节导航">
-  <a href="#concept" data-sec="concept"><span class="dot-label">产品概念</span><span class="dot"></span></a>
-  <a href="#audience" data-sec="audience"><span class="dot-label">面向人群</span><span class="dot"></span></a>
-  <a href="#benefits" data-sec="benefits"><span class="dot-label">产品权益</span><span class="dot"></span></a>
-  <a href="#mentors" data-sec="mentors"><span class="dot-label">交付团队</span><span class="dot"></span></a>
-  <a href="#pricing" data-sec="pricing"><span class="dot-label">产品定价</span><span class="dot"></span></a>
-  <a href="#flow" data-sec="flow"><span class="dot-label">报名流程</span><span class="dot"></span></a>
+  <button class="dotnav-item" data-sec="concept"><span class="dot-label">产品概念</span><span class="dot"></span></button>
+  <button class="dotnav-item" data-sec="audience"><span class="dot-label">面向人群</span><span class="dot"></span></button>
+  <button class="dotnav-item" data-sec="benefits"><span class="dot-label">产品权益</span><span class="dot"></span></button>
+  <button class="dotnav-item" data-sec="mentors"><span class="dot-label">交付团队</span><span class="dot"></span></button>
+  <button class="dotnav-item" data-sec="pricing"><span class="dot-label">产品定价</span><span class="dot"></span></button>
+  <button class="dotnav-item" data-sec="flow"><span class="dot-label">报名流程</span><span class="dot"></span></button>
 </nav>
 
 
@@ -614,7 +638,22 @@
     </div>
 
     <div class="cta-group">
-      <a class="cta" href="#pricing">添加微信 <span class="pass">WBearCoach</span>，咨询课程详情</a>
+      <span class="cta wechat-cta" role="button">
+        <svg class="wc-icon" viewBox="0 0 28 24" fill="currentColor" aria-hidden="true">
+          <rect x="0.5" y="1" width="18" height="13" rx="6.5"/>
+          <polygon points="3.5,13.3 2,18.2 9,13.8"/>
+          <circle cx="6.8" cy="6.9" r="1.55" class="wc-eye"/>
+          <circle cx="13.2" cy="6.9" r="1.55" class="wc-eye"/>
+          <rect x="12" y="10" width="15" height="11" rx="5.5"/>
+          <polygon points="24.8,20.5 26.3,23.8 21,20.8"/>
+          <circle cx="16.8" cy="15" r="1.25" class="wc-eye"/>
+          <circle cx="22.2" cy="15" r="1.25" class="wc-eye"/>
+        </svg>
+        <span class="wc-text">
+          <span class="wc-line1">添加微信 <b class="pass">WBearCoach</b></span>
+          <span class="wc-line2">咨询课程详情</span>
+        </span>
+      </span>
       <button class="view-schedule" onclick="openSchedule()" type="button">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4M7.5 13h3M7.5 16.5h6"/></svg>
         查看完整课表
@@ -678,19 +717,19 @@
         <span class="bi-value">总价值 ¥20,000+</span>
       </div>
       <ol class="bi-list">
-        <li class="flag"><span class="bi-no">权益一</span><span class="bi-name">创变进化模块营</span><span class="bi-meta">3 模块 · 6 个月</span></li>
-        <li><span class="bi-no">权益二</span><span class="bi-name">导师一对一支持</span><span class="bi-meta">2 次 1V1</span></li>
-        <li><span class="bi-no">权益三</span><span class="bi-name">白熊每月答疑会</span><span class="bi-meta">6 次</span></li>
-        <li><span class="bi-no">权益四</span><span class="bi-name">同频行动碰碰会</span><span class="bi-meta">3 次</span></li>
-        <li><span class="bi-no">权益五</span><span class="bi-name">认知共振大社群</span><span class="bi-meta">6 个月</span></li>
-        <li><span class="bi-no">权益六</span><span class="bi-name">创变者专属小群</span><span class="bi-meta">3V1</span></li>
-        <li><span class="bi-no">权益七</span><span class="bi-name">成长可视化系统</span><span class="bi-meta">1 份</span></li>
-        <li><span class="bi-no">权益八</span><span class="bi-name">原地出道打磨会</span><span class="bi-meta">1 次</span></li>
+        <li class="flag"><button class="bi-row" type="button" data-target="benefit-1"><span class="bi-no">权益一</span><span class="bi-name">创变进化模块营</span><span class="bi-meta">3 模块 · 6 个月</span></button></li>
+        <li><button class="bi-row" type="button" data-target="benefit-2"><span class="bi-no">权益二</span><span class="bi-name">导师一对一支持</span><span class="bi-meta">2 次 1V1</span></button></li>
+        <li><button class="bi-row" type="button" data-target="benefit-3"><span class="bi-no">权益三</span><span class="bi-name">白熊每月答疑会</span><span class="bi-meta">6 次</span></button></li>
+        <li><button class="bi-row" type="button" data-target="benefit-4"><span class="bi-no">权益四</span><span class="bi-name">同频行动碰碰会</span><span class="bi-meta">3 次</span></button></li>
+        <li><button class="bi-row" type="button" data-target="benefit-5"><span class="bi-no">权益五</span><span class="bi-name">认知共振大社群</span><span class="bi-meta">6 个月</span></button></li>
+        <li><button class="bi-row" type="button" data-target="benefit-6"><span class="bi-no">权益六</span><span class="bi-name">创变者专属小群</span><span class="bi-meta">3V1</span></button></li>
+        <li><button class="bi-row" type="button" data-target="benefit-7"><span class="bi-no">权益七</span><span class="bi-name">成长可视化系统</span><span class="bi-meta">1 份</span></button></li>
+        <li><button class="bi-row" type="button" data-target="benefit-8"><span class="bi-no">权益八</span><span class="bi-name">原地出道打磨会</span><span class="bi-meta">1 次</span></button></li>
       </ol>
     </div>
 
     <!-- FLAGSHIP : always-expanded hero benefit -->
-    <div class="flagship reveal">
+    <div class="flagship reveal" id="benefit-1">
       <div class="flag-bar">
         <span class="flag-badge"><svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"/></svg>王牌权益 · CORE</span>
         <span class="fb-idx">01</span>
@@ -805,7 +844,7 @@
     <!-- supporting benefits 02-08 -->
     <div class="support-head reveal"><span class="sh-k">PLUS ·07</span><h3>另外 7 项权益，一并交付</h3><span class="sh-line"></span></div>
     <div class="support-grid">
-      <div class="scard reveal">
+      <div class="scard reveal" id="benefit-2">
         <div class="sc-head"><span class="sc-idx">02</span><h4>导师一对一支持</h4><span class="sc-times">2×1V1</span></div>
         <p class="sc-q">每个人都需要自己的「专属支持系统」。</p>
         <p class="sc-form"><b>交付形式：</b>自选时间，2 次 1V1，每次 1 小时腾讯会议语音支持。</p>
@@ -815,7 +854,7 @@
         </ul>
       </div>
 
-      <div class="scard reveal">
+      <div class="scard reveal" id="benefit-3">
         <div class="sc-head"><span class="sc-idx">03</span><h4>白熊每月答疑会</h4><span class="sc-times">×6</span></div>
         <p class="sc-q">困惑越深，突破越大，每个问题都是潜在的机会点。</p>
         <p class="sc-form"><b>交付形式：</b>每月一次高效互动式线上会议。</p>
@@ -828,7 +867,7 @@
         </ul>
       </div>
 
-      <div class="scard reveal">
+      <div class="scard reveal" id="benefit-4">
         <div class="sc-head"><span class="sc-idx">04</span><h4>同频行动碰碰会</h4><span class="sc-times">×3</span></div>
         <p class="sc-q">值得庆祝的、卡住的、想求助的——都带来，行动不孤单。</p>
         <p class="sc-form"><b>交付形式：</b>每两月一次线上 Live，人人开麦局，与新朋友、老朋友同频链接。</p>
@@ -840,7 +879,7 @@
         </ul>
       </div>
 
-      <div class="scard reveal">
+      <div class="scard reveal" id="benefit-5">
         <div class="sc-head"><span class="sc-idx">05</span><h4>认知共振大社群</h4><span class="sc-times">6 个月</span></div>
         <p class="sc-q">很酷的人，需要与更酷的人为伍。</p>
         <p class="sc-form"><b>交付形式：</b>创变者总群的社群互动。</p>
@@ -850,7 +889,7 @@
         </ul>
       </div>
 
-      <div class="scard reveal">
+      <div class="scard reveal" id="benefit-6">
         <div class="sc-head"><span class="sc-idx">06</span><h4>创变者专属小群</h4><span class="sc-times">3V1</span></div>
         <p class="sc-q">你的线上有求必应屋，看见你所有成长。</p>
         <p class="sc-form"><b>交付形式：</b>3V1 小群，为你提供专属支持。</p>
@@ -860,7 +899,7 @@
         </ul>
       </div>
 
-      <div class="scard reveal">
+      <div class="scard reveal" id="benefit-7">
         <div class="sc-head"><span class="sc-idx">07</span><h4>成长可视化系统</h4><span class="sc-times">1 份</span></div>
         <p class="sc-q">每个人都应该有一份自己的年终报告。</p>
         <p class="sc-form"><b>交付形式：</b>共创在线文档（AI × 导师 × 你，三方共建成长手册）。</p>
@@ -870,7 +909,7 @@
         </ul>
       </div>
 
-      <div class="scard wide reveal">
+      <div class="scard wide reveal" id="benefit-8">
         <div class="sc-head"><span class="sc-idx">08</span><h4>原地出道打磨会</h4><span class="sc-times">1 次</span></div>
         <p class="sc-q">策划人生第一次「艺术展」，而你就是展品本身。</p>
         <p class="sc-desc"><b>交付形式：</b>主题工作坊 + 72 小时组队挑战 + 打磨指导。产出「个人故事」文字一篇、「个人 30S 微纪录片」脚本 + 视频一部。成功完成者将作为厂牌代表，参与联名空间的年度「创变者展」。<span style="color:#9a9a90"> * 厂牌负责工作坊教学关键点 + 导师修改意见，而非代写逐字稿。</span></p>
@@ -1032,7 +1071,22 @@
     <div class="ctit">成为未来十年<br>Change Maker</div>
     <div class="cslogan">让好人值得，<span>让好事发生</span></div>
     <div class="cta-group">
-      <a class="cta" href="#pricing">添加微信 <span class="pass">WBearCoach</span>，咨询课程详情</a>
+      <span class="cta wechat-cta" role="button">
+        <svg class="wc-icon" viewBox="0 0 28 24" fill="currentColor" aria-hidden="true">
+          <rect x="0.5" y="1" width="18" height="13" rx="6.5"/>
+          <polygon points="3.5,13.3 2,18.2 9,13.8"/>
+          <circle cx="6.8" cy="6.9" r="1.55" class="wc-eye"/>
+          <circle cx="13.2" cy="6.9" r="1.55" class="wc-eye"/>
+          <rect x="12" y="10" width="15" height="11" rx="5.5"/>
+          <polygon points="24.8,20.5 26.3,23.8 21,20.8"/>
+          <circle cx="16.8" cy="15" r="1.25" class="wc-eye"/>
+          <circle cx="22.2" cy="15" r="1.25" class="wc-eye"/>
+        </svg>
+        <span class="wc-text">
+          <span class="wc-line1">添加微信 <b class="pass">WBearCoach</b></span>
+          <span class="wc-line2">咨询课程详情</span>
+        </span>
+      </span>
       <button class="view-schedule" onclick="openSchedule()" type="button">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4M7.5 13h3M7.5 16.5h6"/></svg>
         查看完整课表
@@ -1061,10 +1115,16 @@
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 
-  // section dot-nav active state
-  const navLinks = [...document.querySelectorAll('.dotnav a')];
+  // section dot-nav active state + click-to-scroll (plain buttons, no href/hash)
+  const navLinks = [...document.querySelectorAll('.dotnav-item')];
   const secMap = {};
   navLinks.forEach(a=>{ const el=document.getElementById(a.dataset.sec); if(el) secMap[a.dataset.sec]=el; });
+  navLinks.forEach(a=>{
+    a.addEventListener('click', ()=>{
+      const el = secMap[a.dataset.sec];
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
   const secIO = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
@@ -1097,6 +1157,21 @@
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', initSchedModal);
   else initSchedModal();
+
+  // benefit index -> smooth-scroll to detail, with a brief highlight flash
+  // (plain buttons, no href/hash — avoids being misread as an external-navigation
+  //  attempt by sandboxed preview frames)
+  document.querySelectorAll('.bi-row').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const id = btn.dataset.target;
+      const target = document.getElementById(id);
+      if(!target) return;
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      target.classList.remove('flash-target');
+      void target.offsetWidth; // restart animation if clicked twice
+      target.classList.add('flash-target');
+    });
+  });
 </script>
 
 
