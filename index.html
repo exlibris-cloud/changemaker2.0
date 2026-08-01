@@ -223,7 +223,7 @@
   .sec-head.in::after{transform:scaleX(1)}
   .sec-title{font-size:clamp(30px,4.6vw,50px);font-weight:900;letter-spacing:.02em;line-height:1.08;margin-bottom:20px}
   .sec-title em{font-style:normal;color:var(--yellow)}
-  .light .sec-title em{color:var(--ink);background:var(--yellow);padding:0 8px}
+  .light .sec-title em{color:var(--ink);background:linear-gradient(to bottom, transparent 58%, var(--yellow) 58%);padding:0 6px;white-space:nowrap}
   .sec-intro{max-width:680px;font-size:16px;color:var(--muted-light)}
   .light .sec-intro{color:#55554e}
 
@@ -232,7 +232,7 @@
   .light .concept-lead mark{color:var(--ink);background:var(--yellow)}
   .light .concept-body p{color:#55554e}
   .light .concept-body p b{color:var(--ink)}
-  .light .buffet b{color:var(--ink);background:var(--yellow);padding:1px 6px;border-radius:3px}
+  .light .buffet b{color:var(--ink);background:linear-gradient(to bottom, transparent 58%, var(--yellow) 58%);padding:1px 5px}
   .light .price-terms h4{color:var(--ink)}
   .light .price-terms li{color:#55554e}
   .light .price-terms li::before{color:var(--yellow-deep)}
@@ -289,7 +289,7 @@
     padding:6px 15px;border-radius:999px;margin-bottom:16px;
   }
   .phase h3{font-size:25px;font-weight:900;margin:0 0 14px}
-  .phase h3 span{background:var(--yellow);padding:0 6px}
+  .phase h3 span{background:linear-gradient(to bottom, transparent 58%, var(--yellow) 58%);padding:0 5px}
   .phase p{font-size:14.5px;color:#4a4a44;line-height:1.8}
   .audience-note{margin-top:40px;font-size:17px;font-weight:600;text-align:center;color:var(--paper)}
   .audience-note b{color:var(--yellow)}
@@ -591,8 +591,9 @@
   }
   @media (max-width:460px){
     .ben-overview{grid-template-columns:1fr}
-    .stats-row{gap:10px 18px}
+    .stats-row{display:grid;grid-template-columns:repeat(2,auto);justify-content:center;gap:12px 26px}
     .stat:not(:last-child)::after{display:none}
+    .sc-head .sc-times{display:none}
     .cycle{max-width:300px}
     .cy-node{width:100px}
     .cy-ic{width:50px;height:50px}
