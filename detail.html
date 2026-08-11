@@ -207,6 +207,92 @@
   }
   .tension-close .hl{ color:var(--yellow); }
 
+  .scene-tags{
+    text-align:center;
+    margin-top:72px;
+  }
+  .scene-label{
+    font-size:12px;
+    letter-spacing:0.4em;
+    color:var(--grey-dim);
+    margin-bottom:20px;
+  }
+  .scene-pills{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .scene-pill{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.15em;
+    color:var(--yellow);
+    border:1px solid var(--yellow-dim);
+    padding:9px 26px;
+    border-radius:999px;
+    transition:border-color 0.3s ease, background 0.3s ease;
+  }
+  .scene-pill:hover{
+    border-color:var(--yellow-soft);
+    background:rgba(250,234,103,0.06);
+  }
+  .scene-sep{
+    width:3px; height:3px;
+    border-radius:50%;
+    background:var(--grey-dim);
+  }
+
+  /* ---------- STEP MARKERS (找到真问题 / 找到第三种解法) ---------- */
+  .step-marker{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    margin:0 auto 40px;
+  }
+  .step-num{
+    font-family:var(--sans);
+    font-weight:900;
+    font-size:12px;
+    color:var(--bg);
+    background:var(--yellow);
+    width:26px; height:26px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    letter-spacing:0;
+    flex:0 0 auto;
+  }
+  .step-text{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:0.35em;
+    color:var(--yellow);
+  }
+  .statement .step-marker{ display:flex; justify-content:center; margin-bottom:32px; }
+  .path-section .step-marker{ display:flex; justify-content:center; }
+
+  .step-connector{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    padding:0 0 10px;
+  }
+  .step-connector-line{
+    width:1px; height:34px;
+    background:linear-gradient(var(--line), var(--yellow-dim));
+  }
+  .step-connector-arrow{
+    color:var(--yellow-soft);
+    font-size:13px;
+    opacity:0.8;
+  }
+
   /* ---------- THIRD PATH DIAGRAM ---------- */
   .path-section{ padding:140px 0 120px; text-align:center; }
   .path-kicker{
@@ -555,14 +641,15 @@
   <section class="tension">
     <div class="wrap">
       <p class="tension-lead reveal">
-        人生真正难解的问题，往往<strong>不是不知道怎么做</strong>。<br>
+        人生真正难解的问题，<br>
+        往往<strong>不是不知道怎么做</strong>。<br>
         而是——每一个选择都有代价。
       </p>
 
       <div class="tension-split reveal">
         <div class="t-col">
           <div class="k">继续</div>
-          <div class="v">舍不得</div>
+          <div class="v">不舒适</div>
         </div>
         <div class="t-divider"></div>
         <div class="t-col">
@@ -575,25 +662,52 @@
         向左，意味着<span class="hl">失去</span>；<br>
         向右，又无法真正说服自己。
       </p>
+
+      <div class="scene-tags reveal">
+        <div class="scene-label">问题可能来自</div>
+        <div class="scene-pills">
+          <span class="scene-pill">关系</span>
+          <span class="scene-sep"></span>
+          <span class="scene-pill">事业</span>
+          <span class="scene-sep"></span>
+          <span class="scene-pill">健康</span>
+        </div>
+      </div>
     </div>
   </section>
+
 
   <!-- STATEMENT -->
   <section class="statement">
     <div class="wrap">
+      <div class="step-marker reveal">
+        <span class="step-num">01</span>
+        <span class="step-text">找到真问题</span>
+      </div>
       <span class="quote-mark reveal">“</span>
       <blockquote class="reveal">
-        当一个问题困扰你足够久，它需要的可能已经不是更多信息，<br>
+        当一个问题困扰你足够久，<br>
+        它需要的可能已经不是更多信息，<br>
         而是一次<u style="text-decoration-color:var(--yellow); text-underline-offset:6px;">重新定义问题</u>的机会。
       </blockquote>
     </div>
   </section>
 
+  <div class="step-connector reveal">
+    <span class="step-connector-line"></span>
+    <span class="step-connector-arrow">↓</span>
+    <span class="step-connector-line"></span>
+  </div>
+
   <!-- THIRD PATH DIAGRAM -->
   <section class="path-section">
     <div class="wrap">
+      <div class="step-marker reveal" style="margin-bottom:20px;">
+        <span class="step-num">02</span>
+        <span class="step-text">找到第三种解法</span>
+      </div>
       <p class="path-kicker reveal">
-        「第三种解法」，是一项为关键问题而设计的<br>深度 1V1 服务。
+        「第三种解法」，<br>是一项为关键问题而设计的深度 1V1 服务。
       </p>
 
       <div class="path-svg-wrap reveal">
@@ -626,10 +740,10 @@
   <section class="service-name">
     <div class="wrap">
       <div class="badge reveal">在六个月周期内　由白熊亲自陪伴</div>
-      <p class="reveal">围绕你提出的<strong style="color:var(--white); font-weight:600;">一个核心问题</strong>进行深度拆解、重新审视与持续推演。</p>
+      <p class="reveal">围绕你提出的<strong style="color:var(--white); font-weight:600;">一个核心问题</strong>，<br>进行深度拆解、重新审视与持续推演。</p>
       <p class="not reveal">不是给你一个标准答案</p>
       <p class="not reveal">也不是替你在 A 和 B 之间做选择</p>
-      <p class="is reveal">而是从你的真实处境出发，穿透表面的二选一，<br>重新寻找问题背后的<strong>变量与可能性</strong>。</p>
+      <p class="is reveal">而是从你的真实处境出发，<br>穿透表面的二选一，<br>重新寻找问题背后的<strong>变量与可能性</strong>。</p>
       <div class="final-line reveal">为你找到原本没有被看见的<span class="hl">第三条路径</span>。</div>
     </div>
   </section>
@@ -643,21 +757,21 @@
           <div class="gain-mark">谈</div>
           <div class="gain-body">
             <h3>6 次白熊亲自 1V1 深度会谈</h3>
-            <p>围绕同一个核心问题，持续深入，而非一次性的建议。</p>
+            <p>围绕同一个核心问题，持续深入，<br>而非一次性的建议。</p>
           </div>
         </div>
         <div class="gain-card reveal">
           <div class="gain-mark">解</div>
           <div class="gain-body">
             <h3>白熊亲自定制解决方案</h3>
-            <p>不套模板，不提供通用答案，只针对你的具体处境建立属于你的解法。</p>
+            <p>不套模板，不提供通用答案，<br>只针对你的具体处境建立属于你的解法。</p>
           </div>
         </div>
         <div class="gain-card reveal">
           <div class="gain-mark">援</div>
           <div class="gain-body">
             <h3>必要时的资源协同</h3>
-            <p>如果真正的破局需要外部力量，白熊会在适合的情况下，协助你连接相应的人与资源。</p>
+            <p>如果真正的破局需要外部力量，<br>白熊会在适合的情况下，<br>协助你连接相应的人与资源。</p>
           </div>
         </div>
       </div>
@@ -703,7 +817,7 @@
 
       <div class="close-copy reveal">
         <p><strong>只接受一个问题。</strong></p>
-        <p>因为真正值得被深度解决的问题，通常不需要很多。</p>
+        <p>因为真正值得被深度解决的问题，<br>通常不需要很多。</p>
       </div>
 
       <div class="final-word reveal">一个，<span class="hl">就够了</span>。</div>
